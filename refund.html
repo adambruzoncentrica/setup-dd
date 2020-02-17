@@ -27,11 +27,11 @@
             <ns-inputter validation="['isRequired']" heading="Claim your refund" name="claim-your-refund" helper="Your account is in credit.">
               <p slot="tip-details">You can choose to split your account credit over the life of your plan or claim the balance in full as a cheque.</p>
 
-              <input type="radio" name="lower" checked="">
-              <label>Pay £60.00 per month</label>
+              <input id="energy" type="radio" name="energy" checked="">
+              <label for="energy">Pay £60.00 per month</label>
 
-              <input type="radio" name="cheque">
-              <label>Pay £80.00 per month and claim a £200.00 cheque</label>
+              <input id="cheque" type="radio" name="cheque">
+              <label for="cheque">Pay £80.00 per month and claim a £200.00 cheque</label>
             </ns-inputter>
 
             <ns-cta type="direct" href="bank-details.html">Enter bank details</ns-cta>
