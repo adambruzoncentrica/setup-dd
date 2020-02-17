@@ -31,8 +31,8 @@
           <ns-card role="listitem" type="support">
             <h3 slot="heading" role="heading" aria-level="3">Your monthly payments</h3>
             <p slot="paragraph">Your first payment of <b>£60.00</b> will be taken on <b>7th March 2020</b>.</p>
-            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£60.00</b> will be taken on <b>1st of each month</b> thereafter.</p>
-            <ns-cta slot="cta" type="text" href="payment-date.html">Change this date</ns-cta>
+            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£60.00</b> will be taken on <b><span id="date">1st</span> of each month</b> thereafter.</p>
+            <ns-cta id="change-date" slot="cta" type="text" href="payment-date.html">Change this date</ns-cta>
           </ns-card>
 
           <ns-card role="listitem" type="support">
@@ -63,7 +63,7 @@
           <ns-card role="listitem" type="flat">
             <h3 slot="heading">Move on to the next step</h3>
             <p slot="paragraph">If you're happy with the regular monthly price above, we can take some bank details.</p>
-            <ns-cta slot="cta" type="direct" href="bank-details.html">Enter bank details</ns-cta>
+            <ns-cta id="bank-details" slot="cta" type="direct" href="bank-details.html">Enter bank details</ns-cta>
           </ns-card>
         </div>
 
@@ -92,5 +92,6 @@
   </div>
   <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
   <script type="text/javascript" src="dist/nucleus.min.js"></script>
+  <script src="main.js" charset="utf-8"></script>
 </body>
 </html>

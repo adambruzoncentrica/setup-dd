@@ -31,8 +31,8 @@
           <ns-card role="listitem" type="support">
             <h3 slot="heading" role="heading" aria-level="3">Your monthly payments</h3>
             <p slot="paragraph">Your first payment of <b>£60.00</b> will be taken on <b>7th March 2020</b>.</p>
-            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£60.00</b> will be taken on <b>1st of each month</b> thereafter.</p>
-            <ns-cta slot="cta" type="text" href="payment-date.html">Change this date</ns-cta>
+            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£60.00</b> will be taken on <b><span id="date">1st</span> of each month</b> thereafter.</p>
+            <ns-cta id="change-date" slot="cta" type="text" href="payment-date.html">Change this date</ns-cta>
           </ns-card>
 
           <ns-card role="listitem" type="support">
@@ -76,14 +76,14 @@
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter validation="[&quot;isRequired&quot;]" heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
+            <ns-inputter validation='["isRequired"]' heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
 
-              <input type="checkbox" name="dd-guarentee">
-              <label>I have read the Direct Debit Guarentee document provided in the link above.</label>
+              <input id="dd-guarantee" type="checkbox" name="guarantee">
+              <label for="dd-guarantee">I have read the Direct Debit Guarantee document provided in the link above.</label>
 
             </ns-inputter>
 
-            <ns-cta type="direct" href="confirmation-energy.html">Complete fixed Direct Debit setup</ns-cta>
+            <ns-cta id="complete" type="direct" href="confirmation-energy.html">Complete fixed Direct Debit setup</ns-cta>
 
           </ns-form>
         </div>
@@ -104,5 +104,6 @@
   </div>
   <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
   <script type="text/javascript" src="dist/nucleus.min.js"></script>
+  <script src="main.js" charset="utf-8"></script>
 </body>
 </html>
