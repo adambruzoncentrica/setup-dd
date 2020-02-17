@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Setup DD - Credit balance - Energy - Success</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+  <div class="ndsn">
+
+    <main>
+
+      <ns-header></ns-header>
+
+      <ns-landmark type="lakeside">
+        <h1 slot="heading">
+          <span class="h5">Setup a fixed Direct Debit.</span>
+          <span class="h1 enlighten"><b>Bank details</b></span>
+        </h1>
+        <p slot="paragraph">Please provide us with some bank details so you can begin the plan for your gas account.</p>
+      </ns-landmark>
+
+      <ns-panel decoration="invert-bridge-cyan">
+        <div class="splash">
+          <h2>Your plan overview</h2>
+        </div>
+
+        <div class="splash triple" role="list">
+
+          <ns-card role="listitem" type="support">
+            <h3 slot="heading" role="heading" aria-level="3">Your monthly payments</h3>
+            <p slot="paragraph">Your first payment of <b>£60.00</b> will be taken on <b>7th March 2020</b>.</p>
+            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£60.00</b> will be taken on <b>1st of each month</b> thereafter.</p>
+            <ns-cta slot="cta" type="text">Change this date</ns-cta>
+          </ns-card>
+
+          <ns-card role="listitem" type="support">
+            <h3 slot="heading" role="heading" aria-level="3">Total projected payment</h3>
+            <p slot="paragraph">By the end of your <b>10-month plan</b>, you will have paid <b>£600.00</b>.</p>
+            <p slot="paragraph"><b>£200</b> of your account credit will be put towards your energy usage.</p>
+          </ns-card>
+
+          <ns-card role="listitem" type="support">
+            <h3 slot="heading" role="heading" aria-level="3">Account balance</h3>
+            <p slot="paragraph">Your account balance is <b>£200.00</b>.</p>
+            <p slot="paragraph">This means your account is in <b>credit</b>.</p>
+            <p slot="paragraph">Your account credit has been <b>split across the remainder of your plan</b>.</p>
+            <ns-cta slot="cta" type="text">Refund options</ns-cta>
+          </ns-card>
+
+        </div>
+
+      </ns-panel>
+
+      <ns-panel>
+        <div class="splash">
+          <h2>Bank details</h2>
+        </div>
+
+        <div class="splash">
+          <ns-form>
+
+            <ns-inputter name="account-holder-name">
+              <label slot="label">Name of the account holder</label>
+              <input type="text">
+            </ns-inputter>
+
+            <ns-inputter mask="00-00-00" separator="-" validation="[&quot;isRequired&quot;]" value="" helper="" name="sort-code">
+              <label slot="label">Sort code</label>
+              <input type="text">
+            </ns-inputter>
+
+            <ns-inputter mask="00000000" separator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="account-number">
+              <label slot="label">Bank or building society account number</label>
+              <input type="text">
+            </ns-inputter>
+
+            <ns-inputter validation="[&quot;isRequired&quot;]" heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
+
+              <input type="checkbox" name="dd-guarentee">
+              <label>I have read the Direct Debit Guarentee document provided in the link above.</label>
+
+            </ns-inputter>
+
+            <ns-cta>Complete fixed Direct Debit setup</ns-cta>
+
+          </ns-form>
+        </div>
+
+      </ns-panel>
+
+      <ns-panel>
+        <div class="splash">
+          <img src="https://www.bacs.co.uk/SiteCollectionImages/BacsLogos/DirectDebitLogo.jpg" alt="">
+          <p>British Gas originators identification number: 948555</p>
+        </div>
+      </ns-panel>
+
+      <ns-footer></ns-footer>
+
+    </main>
+
+  </div>
+  <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
+  <script type="text/javascript" src="/Users/britishgas/Documents/GitHub/nucleus/dist/nucleus.js"></script>
+</body>
+</html>

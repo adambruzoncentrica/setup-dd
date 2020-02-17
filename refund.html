@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Setup DD - Credit balance - Refund</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+  <div class="ndsn">
+
+    <main>
+
+      <ns-header></ns-header>
+
+      <ns-panel>
+
+        <div class="splash">
+
+          <h1 class="h5">Setup a fixed Direct Debit.</h1>
+          <h2 class="enlighten">Refund account credit</h2>
+
+        </div>
+
+        <div class="splash">
+          <ns-form>
+            <ns-inputter validation="['isRequired']" heading="Claim your refund" name="claim-your-refund" helper="Your account is in credit.">
+              <p slot="tip-details">You can choose to split your account credit over the life of your plan or claim the balance in full as a cheque.</p>
+
+              <input type="radio" name="lower" checked="">
+              <label>Pay £60.00 per month</label>
+
+              <input type="radio" name="cheque">
+              <label>Pay £80.00 per month and claim a £200.00 cheque</label>
+            </ns-inputter>
+
+            <ns-cta type="direct">Enter bank details</ns-cta>
+          </ns-form>
+        </div>
+
+      </ns-panel>
+
+      <ns-panel>
+        <div class="splash">
+          <ns-accordion>
+            <h3 slot="heading">Frequently asked questions</h3>
+            <ns-expander>
+              <h4 slot="heading">Why isn't my plan 12 months?</h4>
+              <p>All plans in your area end on the same month so its easier for our meter readers to do their job. The duration of your plan will depend on how far you are from that month.</p>
+            </ns-expander>
+            <ns-expander>
+              <h4 slot="heading">How did you calculate my monthly payment?</h4>
+              <p>We use everything we know about your energy consumption to estimate your average usage and charge you a fixed amount every month.</p>
+            </ns-expander>
+          </ns-accordion>
+        </div>
+      </ns-panel>
+
+      <ns-footer></ns-footer>
+
+    </main>
+
+  </div>
+  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <!-- <script type="text/javascript" src="/Users/britishgas/Documents/GitHub/nucleus/dist/nucleus.js"></script> -->
+</body>
+</html>
