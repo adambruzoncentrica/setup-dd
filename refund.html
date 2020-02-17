@@ -34,7 +34,7 @@
               <label for="cheque">Pay £80.00 per month and claim a £200.00 cheque</label>
             </ns-inputter>
 
-            <ns-cta type="direct" href="bank-details.html">Enter bank details</ns-cta>
+            <ns-cta id="submit-button" type="direct" href="bank-details.html">Enter bank details</ns-cta>
           </ns-form>
         </div>
 
@@ -63,5 +63,11 @@
   </div>
   <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
   <script type="text/javascript" src="nucleus.min.js"></script>
+
+  <script type="text/javascript">
+    document.querySelector('#submit-button').addEventListener('click', () => {
+      console.log('Clicked!')
+    })
+  </script>
 </body>
 </html>
