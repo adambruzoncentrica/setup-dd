@@ -23,18 +23,18 @@
         </div>
 
         <div class="splash">
-          <ns-form>
-            <ns-inputter validation="['isRequired']" heading="Claim your refund" name="claim-your-refund" helper="Your account is in credit.">
+          <ns-form id="refund-form">
+            <ns-inputter validation='["isRequired"]' heading="Claim your refund" name="refund" helper="Your account is in credit.">
               <p slot="tip-details">You can choose to split your account credit over the life of your plan or claim the balance in full as a cheque.</p>
 
-              <input id="energy" type="radio" name="refund" checked="">
+              <input id="energy" type="radio" value="energy" name="refund-option">
               <label for="energy">Pay £60.00 per month</label>
 
-              <input id="cheque" type="radio" name="refund">
+              <input id="cheque" type="radio" value="cheque" name="refund-option">
               <label for="cheque">Pay £80.00 per month and claim a £200.00 cheque</label>
             </ns-inputter>
 
-            <ns-cta id="submit-button" type="direct" href="bank-details.html">Enter bank details</ns-cta>
+            <ns-cta id="submit-button" type="direct">Enter bank details</ns-cta>
           </ns-form>
         </div>
 
@@ -62,12 +62,19 @@
 
   </div>
   <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
-  <script type="text/javascript" src="nucleus.min.js"></script>
+  <script type="text/javascript" src="dist/nucleus.min.js"></script>
 
   <script type="text/javascript">
-    document.querySelector('#submit-button').addEventListener('click', () => {
-      console.log('Clicked!')
-    })
+    document.getElementById('submit-button').addEventListener('click', () => {
+
+      const form = document.querySelector('ns-form');
+      const data = form.validate();
+
+      if (data.isValid) {
+        location.href = "confirmation-" + data.fields[0].value + ".html";
+      }
+
+    });
   </script>
 </body>
 </html>
