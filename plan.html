@@ -16,10 +16,12 @@
       <ns-landmark type="lakeside">
         <h1 slot="heading">
           <span class="h5">Set up a fixed Direct Debit.</span>
-          <span class="h1 enlighten"><b>Bank details</b></span>
+          <span class="h1 enlighten">Your <b>Direct Debit plan</b></span>
         </h1>
-        <p slot="paragraph">Please provide us with some bank details so you can begin the plan for your gas account.</p>
+        <p slot="paragraph">You are setting up a fixed Direct Debit for your gas account.</p>
       </ns-landmark>
+
+      <span id="highlighter-container"></span>
 
       <ns-panel decoration="invert-bridge-cyan">
         <div class="splash">
@@ -54,47 +56,19 @@
       </ns-panel>
 
       <ns-panel>
-        <div class="splash">
-          <h2>Bank details</h2>
-        </div>
 
         <div class="splash">
-          <ns-form>
-
-            <ns-inputter validation='["isRequired"]' name="account-holder-name">
-              <label slot="label">Name of the account holder</label>
-              <input type="text">
-            </ns-inputter>
-
-            <ns-inputter mask="00-00-00" separator="-" ignoreseparator validation='["isRequired", "minLength(6)", "maxLength(6)"]' value="" helper="" name="sort-code">
-              <label slot="label">Sort code</label>
-              <input type="text">
-            </ns-inputter>
-
-            <ns-inputter mask="00000000" separator="" validation='["isRequired", "isInteger", "minLength(8)", "maxLength(8)"]' value="" helper="" name="account-number">
-              <label slot="label">Bank or building society account number</label>
-              <input type="text">
-            </ns-inputter>
-
-            <ns-inputter validation='["isRequired"]' heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
-
-              <input id="dd-guarantee" type="checkbox" name="guarantee" value="1">
-              <label for="dd-guarantee">I have read the Direct Debit Guarantee document provided in the link above.</label>
-
-            </ns-inputter>
-
-            <ns-cta id="complete" type="direct">Complete fixed Direct Debit setup</ns-cta>
-
-          </ns-form>
+          <h2>Let's get your fixed Direct Debit set up</h2>
         </div>
 
-      </ns-panel>
-
-      <ns-panel>
-        <div class="splash">
-          <img src="https://www.bacs.co.uk/SiteCollectionImages/BacsLogos/DirectDebitLogo.jpg" alt="">
-          <p>British Gas originators identification number: 948555</p>
+        <div class="splash triple" role="list">
+          <ns-card role="listitem" type="flat">
+            <h3 slot="heading">Move on to the next step</h3>
+            <p slot="paragraph">If you're happy with the regular monthly price above, we can take some bank details.</p>
+            <ns-cta id="bank-details" slot="cta" type="direct" href="bank-details.html">Enter bank details</ns-cta>
+          </ns-card>
         </div>
+
       </ns-panel>
 
       <ns-panel>
@@ -118,22 +92,16 @@
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-  var pageFAQs = [0,1,2,3];
+  var pageFAQs = [0,1,2];
+  if (type == "cheque") {
+    pageFAQs.push(3);
+  }
+
   for (var i = 0; i < pageFAQs.length; i++) {
     var expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
   }
-  </script>
-
-  <script type="text/javascript">
-    document.getElementById('complete').addEventListener('click', () => {
-      const form = document.querySelector('ns-form');
-      const data = form.validate();
-      if (data.isValid) {
-        location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "";
-      }
-    });
   </script>
 </body>
 </html>

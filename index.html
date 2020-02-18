@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Setup DD - Credit balance - Quote</title>
+  <title>British Gas | Set up Direct Debit</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
@@ -13,70 +13,28 @@
 
       <ns-header></ns-header>
 
-      <ns-landmark type="lakeside">
+      <ns-landmark type="hillside">
         <h1 slot="heading">
           <span class="h5">Set up a fixed Direct Debit.</span>
-          <span class="h1 enlighten">Your <b>Direct Debit plan</b></span>
+          <span class="h1 enlighten">Set up a <b>Fixed Direct Debit</b> for your gas account</span>
         </h1>
-        <p slot="paragraph">You are setting up a fixed Direct Debit for your gas account.</p>
+        <p slot="paragraph">Pay the same amount each month with a Direct Debit. We check your account twice a year to make sure you only pay for the energy you use.</p>
       </ns-landmark>
 
       <span id="highlighter-container"></span>
 
-      <ns-panel decoration="invert-bridge-cyan">
-        <div class="splash">
-          <h2>Your plan overview</h2>
-        </div>
-
-        <div class="splash triple" role="list">
-
-          <ns-card role="listitem" type="support">
-            <h3 slot="heading" role="heading" aria-level="3">Your monthly payments</h3>
-            <p slot="paragraph">Your first payment of <b>£<span id="first">60</span>.00</b> will be taken on <b id="first-date">7th March 2020</b>.</p>
-            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£<span id="monthly">60</span>.00</b> will be taken on <b><span id="date">1st</span> of each month</b> thereafter.</p>
-            <ns-cta id="change-date" slot="cta" type="text" href="payment-date.html">Change this date</ns-cta>
-          </ns-card>
-
-          <ns-card role="listitem" type="support">
-            <h3 slot="heading" role="heading" aria-level="3">Total projected payment</h3>
-            <p slot="paragraph">By the end of your <b>10-month plan</b>, you will have paid <b>£<span id="plan-total">600</span>.00</b>.</p>
-            <p id="credit-paragraph" slot="paragraph"><b>£200</b> of your account credit will be put towards your energy usage.</p>
-          </ns-card>
-
-          <ns-card role="listitem" type="support">
-            <h3 slot="heading" role="heading" aria-level="3">Account balance</h3>
-            <p slot="paragraph">Your account balance is <b>£200.00</b>.</p>
-            <p slot="paragraph">This means your account is in <b>credit</b>.</p>
-            <p id="refund-description" slot="paragraph">Your account credit has been <b>split across the remainder of your plan</b>.</p>
-            <ns-cta id="refund-options" slot="cta" type="text" href="refund.html">Refund options</ns-cta>
-          </ns-card>
-
-        </div>
-
-      </ns-panel>
-
       <ns-panel>
 
         <div class="splash">
-          <h2>Let's get your fixed Direct Debit setup</h2>
+          <h2>Before you begin, here is what to expect.</h2>
+          <ul class="ul-bullet">
+            <li>Confirm the date you want your payments to come out.</li>
+            <li>Enter the bank details you want the payments to come from.</li>
+            <li>Confirm that you are the account holder and authorised to set up a Direct Debit on this account.</li>
+          </ul>
+          <ns-cta id="start" slot="cta" type="direct" href="plan.html">Enter bank details</ns-cta>
         </div>
 
-        <div class="splash triple" role="list">
-          <ns-card role="listitem" type="flat">
-            <h3 slot="heading">Move on to the next step</h3>
-            <p slot="paragraph">If you're happy with the regular monthly price above, we can take some bank details.</p>
-            <ns-cta id="bank-details" slot="cta" type="direct" href="bank-details.html">Enter bank details</ns-cta>
-          </ns-card>
-        </div>
-
-      </ns-panel>
-
-      <ns-panel>
-        <div class="splash">
-          <ns-accordion id="faqs">
-            <h3 slot="heading">Frequently asked questions</h3>
-          </ns-accordion>
-        </div>
       </ns-panel>
 
       <ns-footer></ns-footer>
@@ -91,17 +49,5 @@
 
   <script src="main.js" charset="utf-8"></script>
 
-  <script type="text/javascript">
-  var pageFAQs = [0,1,2];
-  if (type == "cheque") {
-    pageFAQs.push(3);
-  }
-
-  for (var i = 0; i < pageFAQs.length; i++) {
-    var expander = document.createElement('ns-expander');
-    expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
-    document.getElementById('faqs').appendChild(expander);
-  }
-  </script>
 </body>
 </html>
