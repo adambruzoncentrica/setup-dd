@@ -131,10 +131,8 @@
       const form = document.querySelector('ns-form');
       const data = form.validate();
 
-      console.log(data.isValid());
-
       if (data.isValid) {
-        // location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "";
+        location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "";
       }
     });
   </script>
