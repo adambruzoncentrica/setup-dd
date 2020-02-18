@@ -62,7 +62,8 @@
       const data = form.validate();
 
       if (data.isValid) {
-        location.href = "index.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
+        console.log(data.fields[0].value);
+        // location.href = "index.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
       }
     });
   </script>
