@@ -83,7 +83,7 @@
 
             </ns-inputter>
 
-            <ns-cta id="complete" type="direct" href="confirmation-energy.html">Complete fixed Direct Debit setup</ns-cta>
+            <ns-cta id="complete" type="direct">Complete fixed Direct Debit setup</ns-cta>
 
           </ns-form>
         </div>
@@ -131,8 +131,10 @@
       const form = document.querySelector('ns-form');
       const data = form.validate();
 
+      console.log(data.isValid());
+
       if (data.isValid) {
-        location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "info";
+        // location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "info";
       }
     });
   </script>
