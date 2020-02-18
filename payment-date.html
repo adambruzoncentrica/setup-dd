@@ -30,7 +30,7 @@
                 <option value="">Please select</option>
               </select>
             </ns-inputter>
-            <ns-cta id="change-date" type="direct" icon="arrow-right">Confirm this date</ns-cta>
+            <ns-cta id="submit-date" type="direct" icon="arrow-right">Confirm this date</ns-cta>
           </ns-form>
         </div>
 
@@ -57,13 +57,12 @@
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-    document.getElementById('change-date').addEventListener('click', () => {
+    document.getElementById('submit-date').addEventListener('click', () => {
       const form = document.querySelector('ns-form');
       const data = form.validate();
 
       if (data.isValid) {
-        console.log(data.fields[0].value);
-        // location.href = "index.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
+        location.href = "index.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
       }
     });
   </script>
