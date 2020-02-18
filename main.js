@@ -25,7 +25,7 @@ var faqs = [
   },
   {
     heading: `<h4 slot="heading">Why are accounts reviewed?</h4>`,
-    content: `<p>All plans are reviewed...</p>`
+    content: `<p>All plans are reviewed on a periodic basis to ensure that you are paying the right amount based on your energy consumption.</p>`
   }
 ];
 
