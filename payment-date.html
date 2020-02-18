@@ -35,7 +35,7 @@
         </div>
 
         <div class="splash">
-          <ns-cta id="keep-date" slot="cta" type="text" href="index.html" icon="arrow-left">Keep the <span id="date">1st</span> of each month</ns-cta>
+          <ns-cta id="keep-date" slot="cta" type="text" href="plan.html" icon="arrow-left">Keep the <span id="date">1st</span> of each month</ns-cta>
         </div>
 
       </ns-panel>
@@ -65,7 +65,7 @@
 
       if (data.isValid) {
         // console.log(data.fields[0].value);
-        location.href = "index.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
+        location.href = "plan.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
       }
     });
   </script>
