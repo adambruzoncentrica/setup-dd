@@ -17,7 +17,7 @@
 
         <div class="splash">
 
-          <h1 class="h5">Setup a fixed Direct Debit.</h1>
+          <h1 class="h5">Set up a fixed Direct Debit.</h1>
           <h2 class="enlighten">Refund account credit</h2>
 
         </div>
@@ -53,29 +53,25 @@
     </main>
 
   </div>
+
   <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
-  <!-- <script type="text/javascript" src="dist/nucleus.min.js"></script> -->
   <script src="moment.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-
   document.getElementById('submit-button').addEventListener('click', () => {
-
     const form = document.querySelector('ns-form');
     const data = form.validate();
-
     if (data.isValid) {
       location.href = "index.html?date=" + date + "&type=" + data.fields[0].value + "&hl=" + "success";
     }
-
   });
   </script>
 
   <script type="text/javascript">
-
   var pageFAQs = [2,3];
-
   for (var i = 0; i < pageFAQs.length; i++) {
     var expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
