@@ -72,4 +72,4 @@ if (document.getElementById('change-date')) { document.getElementById('change-da
 if (document.getElementById('keep-date')) { document.getElementById('keep-date').href = "index.html?date=" + date + "&type=" + type + "&hl=" + hl; }
 if (document.getElementById('bank-details')) { document.getElementById('bank-details').href = "bank-details.html?date=" + date + "&type=" + type + "&hl=" + hl; }
 if (document.getElementById('refund-options')) { document.getElementById('refund-options').href = "refund.html?date=" + date + "&type=" + type + "&hl=" + hl; }
-if (document.getElementById('complete')) { document.getElementById('complete').href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + hl; }
+// if (document.getElementById('complete')) { document.getElementById('complete').href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + hl; }
