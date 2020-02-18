@@ -61,7 +61,7 @@
         <div class="splash">
           <ns-form>
 
-            <ns-inputter name="account-holder-name">
+            <ns-inputter validation="[&quot;isRequired&quot;]" name="account-holder-name">
               <label slot="label">Name of the account holder</label>
               <input type="text">
             </ns-inputter>
@@ -76,7 +76,7 @@
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter validation='["isRequired"]' heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
+            <ns-inputter validation="[&quot;isRequired&quot;]" heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
 
               <input id="dd-guarantee" type="checkbox" name="guarantee">
               <label for="dd-guarantee">I have read the Direct Debit Guarantee document provided in the link above.</label>
@@ -124,6 +124,17 @@
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
   }
+  </script>
+
+  <script type="text/javascript">
+    document.getElementById('complete').addEventListener('click', () => {
+      const form = document.querySelector('ns-form');
+      const data = form.validate();
+
+      if (data.isValid) {
+        location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "info";
+      }
+    });
   </script>
 </body>
 </html>
