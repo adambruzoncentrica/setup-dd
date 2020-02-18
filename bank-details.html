@@ -120,6 +120,9 @@
   var pageFAQs = [0,1,2,3];
 
   for (var i = 0; i < pageFAQs.length; i++) {
+
+    console.log(i, faqs[pageFAQs[i]]);
+
     var expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
