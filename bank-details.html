@@ -110,21 +110,16 @@
     </main>
 
   </div>
+
   <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
-  <!-- <script type="text/javascript" src="dist/nucleus.min.js"></script> -->
   <script src="moment.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-
   var pageFAQs = [0,1,2,3];
-
-  console.log(faqs[0]);
-
   for (var i = 0; i < pageFAQs.length; i++) {
-
-    console.log(i, faqs[pageFAQs[i]]);
-
     var expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
@@ -135,7 +130,6 @@
     document.getElementById('complete').addEventListener('click', () => {
       const form = document.querySelector('ns-form');
       const data = form.validate();
-
       if (data.isValid) {
         location.href = "confirmation.html?date=" + date + "&type=" + type + "&hl=" + "";
       }
