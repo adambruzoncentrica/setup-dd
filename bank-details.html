@@ -66,12 +66,12 @@
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter mask="00-00-00" separator="-" validation='["isRequired"]' value="" helper="" name="sort-code">
+            <ns-inputter mask="00-00-00" separator="-" validation='["isRequired", "isInteger", "minLength(6)", "maxLength(6)"]' value="" helper="" name="sort-code">
               <label slot="label">Sort code</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter mask="00000000" separator="" validation='["isRequired"]' value="" helper="" name="account-number">
+            <ns-inputter mask="00000000" separator="" validation='["isRequired", "isInteger", "minLength(8)", "maxLength(8)"]' value="" helper="" name="account-number">
               <label slot="label">Bank or building society account number</label>
               <input type="text">
             </ns-inputter>
