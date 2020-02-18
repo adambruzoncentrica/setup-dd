@@ -61,22 +61,22 @@
         <div class="splash">
           <ns-form>
 
-            <ns-inputter validation="[&quot;isRequired&quot;]" name="account-holder-name">
+            <ns-inputter validation='["isRequired"]' name="account-holder-name">
               <label slot="label">Name of the account holder</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter mask="00-00-00" separator="-" validation="[&quot;isRequired&quot;]" value="" helper="" name="sort-code">
+            <ns-inputter mask="00-00-00" separator="-" validation='["isRequired"]' value="" helper="" name="sort-code">
               <label slot="label">Sort code</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter mask="00000000" separator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="account-number">
+            <ns-inputter mask="00000000" separator="" validation='["isRequired"]' value="" helper="" name="account-number">
               <label slot="label">Bank or building society account number</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter validation="[&quot;isRequired&quot;]" heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
+            <ns-inputter validation='["isRequired"]' heading="Important information" helper="<ns-cta type=&quot;text&quot;>Direct Debit Guarentee</ns-cta>" name="dd-guarentee">
 
               <input id="dd-guarantee" type="checkbox" name="guarantee">
               <label for="dd-guarantee">I have read the Direct Debit Guarantee document provided in the link above.</label>
