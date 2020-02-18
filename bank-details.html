@@ -30,23 +30,23 @@
 
           <ns-card role="listitem" type="support">
             <h3 slot="heading" role="heading" aria-level="3">Your monthly payments</h3>
-            <p slot="paragraph">Your first payment of <b>£60.00</b> will be taken on <b>7th March 2020</b>.</p>
-            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£60.00</b> will be taken on <b><span id="date">1st</span> of each month</b> thereafter.</p>
+            <p slot="paragraph">Your first payment of <b>£<span id="first">60</span>.00</b> will be taken on <b id="first-date">7th March 2020</b>.</p>
+            <p slot="paragraph">Then, a further <b>9 regular monthly payments</b> of <b>£<span id="monthly">60</span>.00</b> will be taken on <b><span id="date">1st</span> of each month</b> thereafter.</p>
             <ns-cta id="change-date" slot="cta" type="text" href="payment-date.html">Change this date</ns-cta>
           </ns-card>
 
           <ns-card role="listitem" type="support">
             <h3 slot="heading" role="heading" aria-level="3">Total projected payment</h3>
-            <p slot="paragraph">By the end of your <b>10-month plan</b>, you will have paid <b>£600.00</b>.</p>
-            <p slot="paragraph"><b>£200</b> of your account credit will be put towards your energy usage.</p>
+            <p slot="paragraph">By the end of your <b>10-month plan</b>, you will have paid <b>£<span id="plan-total">600</span>.00</b>.</p>
+            <p id="credit-paragraph" slot="paragraph"><b>£200</b> of your account credit will be put towards your energy usage.</p>
           </ns-card>
 
           <ns-card role="listitem" type="support">
             <h3 slot="heading" role="heading" aria-level="3">Account balance</h3>
             <p slot="paragraph">Your account balance is <b>£200.00</b>.</p>
             <p slot="paragraph">This means your account is in <b>credit</b>.</p>
-            <p slot="paragraph">Your account credit has been <b>split across the remainder of your plan</b>.</p>
-            <ns-cta slot="cta" type="text" href="refund.html">Refund options</ns-cta>
+            <p id="refund-description" slot="paragraph">Your account credit has been <b>split across the remainder of your plan</b>.</p>
+            <ns-cta id="refund-options" slot="cta" type="text" href="refund.html">Refund options</ns-cta>
           </ns-card>
 
         </div>
@@ -97,6 +97,14 @@
         </div>
       </ns-panel>
 
+      <ns-panel>
+        <div class="splash">
+          <ns-accordion id="faqs">
+            <h3 slot="heading">Frequently asked questions</h3>
+          </ns-accordion>
+        </div>
+      </ns-panel>
+
       <ns-footer></ns-footer>
 
     </main>
@@ -104,6 +112,18 @@
   </div>
   <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
   <script type="text/javascript" src="dist/nucleus.min.js"></script>
+  <script src="moment.js" charset="utf-8"></script>
   <script src="main.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+
+  var pageFAQs = [0,1,2,3];
+
+  for (var i = 0; i < pageFAQs.length; i++) {
+    var expander = document.createElement('ns-expander');
+    expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
+    document.getElementById('faqs').appendChild(expander);
+  }
+  </script>
 </body>
 </html>

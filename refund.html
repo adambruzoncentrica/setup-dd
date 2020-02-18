@@ -34,7 +34,7 @@
               <label for="cheque">Pay £80.00 per month and claim a £200.00 cheque</label>
             </ns-inputter>
 
-            <ns-cta id="submit-button" type="direct">Enter bank details</ns-cta>
+            <ns-cta id="submit-button" type="direct">Select this refund option</ns-cta>
           </ns-form>
         </div>
 
@@ -42,16 +42,8 @@
 
       <ns-panel>
         <div class="splash">
-          <ns-accordion>
+          <ns-accordion id="faqs">
             <h3 slot="heading">Frequently asked questions</h3>
-            <ns-expander>
-              <h4 slot="heading">Why isn't my plan 12 months?</h4>
-              <p>All plans in your area end on the same month so its easier for our meter readers to do their job. The duration of your plan will depend on how far you are from that month.</p>
-            </ns-expander>
-            <ns-expander>
-              <h4 slot="heading">How did you calculate my monthly payment?</h4>
-              <p>We use everything we know about your energy consumption to estimate your average usage and charge you a fixed amount every month.</p>
-            </ns-expander>
           </ns-accordion>
         </div>
       </ns-panel>
@@ -63,6 +55,7 @@
   </div>
   <!-- <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script> -->
   <script type="text/javascript" src="dist/nucleus.min.js"></script>
+  <script src="moment.js" charset="utf-8"></script>
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
@@ -73,10 +66,21 @@
     const data = form.validate();
 
     if (data.isValid) {
-      location.href = "bank-details.html?date=" + date + "&type=" + data.fields[0].value;
+      location.href = "index.html?date=" + date + "&type=" + data.fields[0].value + "&hl=" + "success";
     }
 
   });
+  </script>
+
+  <script type="text/javascript">
+
+  var pageFAQs = [2,3];
+
+  for (var i = 0; i < pageFAQs.length; i++) {
+    var expander = document.createElement('ns-expander');
+    expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
+    document.getElementById('faqs').appendChild(expander);
+  }
   </script>
 </body>
 </html>
