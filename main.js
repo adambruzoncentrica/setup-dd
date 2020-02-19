@@ -32,7 +32,7 @@ if (hl == "info") {
 }
 
 var pt = (type == "cheque") ? 800 : 600;
-var rd = (type == "cheque") ? 'You have chosen to recieve the <b>credit balance as a cheque</b>.' : 'Your account credit has been <b>split across the remainder of your plan</b>.';
+var rd = (type == "cheque") ? 'You have chosen to recieve the <b>credit balance as a cheque</b>.' : 'Your account credit has been put towards <b>your annual energy usage</b>.';
 var cp = (type == "cheque") ? '<b>£200</b> of your account credit will be sent to you as a cheque in the post.' : '<b>£200</b> of your account credit will be put towards your energy usage.';
 
 if (document.getElementById('highlighter-container')) { document.getElementById('highlighter-container').innerHTML = highlighter; }
