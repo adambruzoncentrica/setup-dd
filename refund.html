@@ -24,14 +24,14 @@
 
         <div class="splash">
           <ns-form id="refund-form">
-            <ns-inputter validation='["isRequired"]' heading="Claim your refund" name="refund" helper="Your account is in credit.">
-              <p slot="tip-details">You can choose to split your account credit over the life of your plan or claim the balance in full as a cheque.</p>
+            <ns-inputter validation='["isRequired"]' heading="Tell us how you would like to claim your account credit" name="refund" helper="Your account is in credit.">
+              <p slot="tip-details">You can choose to split your account credit over the course of your plan or claim the balance as a cheque.</p>
 
               <input id="energy" type="radio" value="energy" name="refund-option">
-              <label for="energy">Pay £60.00 per month</label>
+              <label for="energy">Pay £60.00 per month and use your account credit to lower your monthly payments</label>
 
               <input id="cheque" type="radio" value="cheque" name="refund-option">
-              <label for="cheque">Pay £80.00 per month and claim a £200.00 cheque</label>
+              <label for="cheque">Pay £80.00 per month and take your credit by cheque</label>
             </ns-inputter>
 
             <ns-cta id="submit-button" type="direct">Select this refund option</ns-cta>
