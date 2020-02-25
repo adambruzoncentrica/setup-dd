@@ -10,11 +10,8 @@ var type = (urlParams.get('type')) ? urlParams.get('type') : "energy";
 var hl = urlParams.get('hl');
 
 var balance = (urlParams.get('balance')) ? parseFloat(urlParams.get('balance')) : 0;
-console.log(balance);
 var total = (urlParams.get('total')) ? parseFloat(urlParams.get('total')) : balance + randomIntFromTo(200, 600);
-console.log(total);
 var term = (urlParams.get('term')) ? parseFloat(urlParams.get('term')) : 10;
-console.log(term);
 
 // Functions
 function randomIntFromTo(from, to) {
