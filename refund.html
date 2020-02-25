@@ -13,14 +13,14 @@
 
       <ns-header></ns-header>
 
+      <ns-landmark type="lakeside">
+        <h1 slot="heading">
+          <span class="h5">Set up a Direct Debit.</span>
+          <span class="h1 enlighten">Refund account credit</span>
+        </h1>
+      </ns-landmark>
+
       <ns-panel>
-
-        <div class="splash">
-
-          <h1 class="h5">Set up a fixed Direct Debit.</h1>
-          <h2 class="enlighten">Refund account credit</h2>
-
-        </div>
 
         <div class="splash">
           <ns-form id="refund-form">
@@ -34,8 +34,12 @@
               <label for="cheque">Pay £80.00 per month and take your credit by cheque</label>
             </ns-inputter>
 
-            <ns-cta id="submit-button" type="direct">Select this refund option</ns-cta>
+            <ns-cta id="submit-button" type="direct" href="plan.html">Select this refund option</ns-cta>
           </ns-form>
+        </div>
+
+        <div class="splash">
+          <ns-cta id="dont-change-refund" slot="cta" type="text" onclick="javascript:history.back()" icon="arrow-left">Keep lower monthly payments</ns-cta>
         </div>
 
       </ns-panel>
@@ -61,12 +65,10 @@
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-  document.getElementById('submit-button').addEventListener('click', () => {
-    const form = document.querySelector('ns-form');
-    const data = form.validate();
-    if (data.isValid) {
-      location.href = "plan.html?date=" + date + "&type=" + data.fields[0].value + "&hl=" + "success";
-    }
+  document.querySelector('[name="refund"]').addEventListener('change', function(e) {
+    urlParams.set('type', this.value);
+    urlParams.set('hl', "success");
+    updateHrefs();
   });
   </script>
 
@@ -77,6 +79,8 @@
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
   }
+
+  updateHrefs();
   </script>
 </body>
 </html>

@@ -35,7 +35,7 @@
         </div>
 
         <div class="splash">
-          <ns-cta id="keep-date" slot="cta" type="text" href="plan.html" icon="arrow-left">Keep the <span id="date">1st</span> of each month</ns-cta>
+          <ns-cta id="keep-date" slot="cta" type="text" onclick="javascript:history.back()" icon="arrow-left">Keep the <span id="date">1st</span> of each month</ns-cta>
         </div>
 
       </ns-panel>
@@ -59,15 +59,24 @@
   <script src="main.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-    document.getElementById('submit-date').addEventListener('click', () => {
-      const form = document.querySelector('ns-form');
-      const data = form.validate();
 
-      if (data.isValid) {
-        // console.log(data.fields[0].value);
-        location.href = "plan.html?date=" + data.fields[0].value + "&type=" + type + "&hl=" + "info";
-      }
+    document.getElementById('days-of-month').addEventListener('change', function(e) {
+      document.getElementById('submit-date').setAttribute('href', "plan.html");
+      urlParams.set('date', this.value);
+      urlParams.set('hl', "info");
+      updateHrefs();
     });
+
+    for (var i = 1; i <= 28; i++) {
+      option = document.createElement('option');
+      option.value = i;
+      option.innerHTML = moment.utc().date(i).format("Do");
+      if (document.getElementById('days-of-month')) { document.getElementById('days-of-month').appendChild(option); }
+    }
+
+    document.getElementById('date').innerHTML = moment.utc().date(date).format("Do");
+
+    updateHrefs();
   </script>
 </body>
 </html>
