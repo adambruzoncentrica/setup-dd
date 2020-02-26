@@ -1,4 +1,4 @@
-var faqs = [
+let faqs = [
   {
     heading: `<h4 slot="heading">Why isn't my plan 12 months?</h4>`,
     content: `<p>All plans in your area end on the same month so its easier for our meter readers to do their job. The duration of your plan will depend on how far you are from that month.</p>`

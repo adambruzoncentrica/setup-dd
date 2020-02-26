@@ -13,10 +13,10 @@
 
       <ns-header></ns-header>
 
-      <ns-landmark type="hillside" gradient="invert-ramp-cyan">
+      <ns-landmark type="hillside" gradient="invert-ramp-green-light">
         <h1 slot="heading">
           <span class="h5">Set up a fixed Direct Debit.</span>
-          <span class="h1 enlighten">Direct Debit <b>instruction received</b></span>
+          <span class="h1 enlighten">Your Direct Debit <b>has been set up</b></span>
         </h1>
         <p slot="paragraph">Thank you Mr. Smith. Your fixed Direct Debit instruction has been received for your gas account.</p>
       </ns-landmark>
@@ -82,14 +82,14 @@
 
   <script type="text/javascript">
 
-  var pageFAQs = [4];
+  let pageFAQs = [4];
   if (type == "cheque") {
     pageFAQs.slice();
     pageFAQs.unshift(3);
   }
 
-  for (var i = 0; i < pageFAQs.length; i++) {
-    var expander = document.createElement('ns-expander');
+  for (let i = 0; i < pageFAQs.length; i++) {
+    let expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
   }

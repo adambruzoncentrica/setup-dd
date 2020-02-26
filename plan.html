@@ -77,13 +77,13 @@
   <script src="plan.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-  var pageFAQs = [0,1,2];
+  let pageFAQs = [0,1,2];
   if (type == "cheque") {
     pageFAQs.push(3);
   }
 
-  for (var i = 0; i < pageFAQs.length; i++) {
-    var expander = document.createElement('ns-expander');
+  for (let i = 0; i < pageFAQs.length; i++) {
+    let expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
   }

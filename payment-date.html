@@ -67,7 +67,7 @@
       updateHrefs();
     });
 
-    for (var i = 1; i <= 28; i++) {
+    for (let i = 1; i <= 28; i++) {
       option = document.createElement('option');
       option.value = i;
       option.innerHTML = moment.utc().date(i).format("Do");

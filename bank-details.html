@@ -21,6 +21,8 @@
         <p slot="paragraph">Please provide us with some bank details so you can begin the plan for your gas account.</p>
       </ns-landmark>
 
+      <span id="highlighter-container"></span>
+
       <ns-panel decoration="invert-bridge-cyan">
 
         <div class="splash">
@@ -103,9 +105,9 @@
   <script src="plan.js" charset="utf-8"></script>
 
   <script type="text/javascript">
-  var pageFAQs = [0,1,2,3];
-  for (var i = 0; i < pageFAQs.length; i++) {
-    var expander = document.createElement('ns-expander');
+  let pageFAQs = [0,1,2,3];
+  for (let i = 0; i < pageFAQs.length; i++) {
+    let expander = document.createElement('ns-expander');
     expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
     document.getElementById('faqs').appendChild(expander);
   }
@@ -115,7 +117,13 @@
     document.getElementById('complete').addEventListener('click', () => {
       const form = document.querySelector('ns-form');
       const data = form.validate();
-      if (data.isValid) {
+      let zero = data.fields.find((el) => {
+        return el.value == "00000000";
+      });
+      if (zero) {
+        urlParams.set('hl', "error");
+        location.href = "bank-details.html" + "?" + urlParams.toString();
+      } else if (data.isValid) {
         urlParams.delete('hl');
         location.href = "confirmation.html" + "?" + urlParams.toString();
       }
