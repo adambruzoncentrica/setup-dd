@@ -28,17 +28,17 @@
 
         <div class="splash">
           <ns-form>
-            <ns-inputter mask="" separator="" validation="" value="" helper="Default: 0" name="account-balance">
+            <ns-inputter mask="" separator="" validation="" value="" helper="Default: 0" name="balance">
               <label slot="label">Account balance</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter mask="" separator="" validation="" value="" helper="Default: Random from 200 to 600" name="plan-total">
+            <ns-inputter mask="" separator="" validation="" value="" helper="Default: Random from 200 to 600" name="total">
               <label slot="label">Plan total</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter validation="" heading="Plan length" helper="Default: 10 months" name="plan-length" value="">
+            <ns-inputter validation="" heading="Plan length" helper="Default: 10 months" name="term" value="">
               <label slot="label">Plan length</label>
 
               <select name="select">
@@ -58,17 +58,17 @@
               </select>
             </ns-inputter>
 
-            <ns-inputter mask="" separator="" validation="" value="" helper="" name="last-meter-reading">
+            <ns-inputter mask="" separator="" validation="" value="" helper="" name="last-reading">
               <label slot="label">Last meter reading</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-inputter mask="dd/mm/yyyy" separator="/" validation="" value="" helper="" name="last-meter-read">
+            <ns-inputter mask="dd/mm/yyyy" separator="/" validation="" value="" helper="" name="last-read">
               <label slot="label">Date of last meter read</label>
               <input type="text">
             </ns-inputter>
 
-            <ns-cta type="direct" href="checklist.html" icon="arrow-right" onclick="">Let's get into it!</ns-cta>
+            <ns-cta id="begin" type="direct" icon="arrow-right" onclick="">Let's get into it!</ns-cta>
 
           </ns-form>
         </div>
@@ -80,7 +80,30 @@
     </main>
 
   </div>
+
   <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
-  <!-- <script type="text/javascript" src="/Users/britishgas/Documents/GitHub/nucleus/dist/nucleus.js"></script> -->
+  <script src="moment.js" charset="utf-8"></script>
+
+  <script src="main.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+  document.getElementById('begin').addEventListener('click', () => {
+    const form = document.querySelector('ns-form');
+    const data = form.validate();
+    if (data.isValid) {
+
+      for (var i = 0; i < data.fields.length; i++) {
+        if (data.fields[i].value) {
+          urlParams.set(data.fields[i].name, data.fields[i].value);
+        }
+      }
+
+      location.href = "checklist.html" + "?" + urlParams.toString();
+    }
+  });
+
+  // updateHrefs();
+  </script>
+
 </body>
 </html>
