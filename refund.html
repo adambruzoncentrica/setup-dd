@@ -76,8 +76,8 @@
   let pageFAQs = [2,3];
   renderFaqs(pageFAQs);
 
-  document.getElementById('energy-price').setAttribute('pence', Math.round((total - balance) / term));
-  document.getElementById('cheque-price').setAttribute('pence', Math.round(total / term));
+  document.getElementById('energy-price').setAttribute('pence', totalEnergy);
+  document.getElementById('cheque-price').setAttribute('pence', totalPayment);
 
   updateHrefs();
   </script>
