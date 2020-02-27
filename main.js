@@ -14,7 +14,7 @@ let total = (urlParams.get('total')) ? parseInt(urlParams.get('total')) : balanc
 let term = (urlParams.get('term')) ? parseInt(urlParams.get('term')) : 10;
 
     balance = Math.round(balance);
-let monthly = (Math.round((total - balance) / term) < 10) ? 10 : Math.round((total - balance) / term);
+let monthly = (Math.round((total - balance) / term) < 1000) ? 1000 : Math.round((total - balance) / term);
 
 urlParams.set('total', total);
 
