@@ -13,7 +13,7 @@ let balance = (urlParams.get('balance')) ? parseInt(urlParams.get('balance')) : 
 let total = (urlParams.get('total')) ? parseInt(urlParams.get('total')) : balance + randomIntFromTo(20000, 60000);
 let term = (urlParams.get('term')) ? parseInt(urlParams.get('term')) : 10;
 
-let balance = Math.round(balance);
+    balance = Math.round(balance);
 let monthly = (Math.round((total - balance) / term) < 10) ? 10 : Math.round((total - balance) / term);
 
 urlParams.set('total', total);
