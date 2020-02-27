@@ -13,13 +13,15 @@
 
       <ns-header></ns-header>
 
-      <ns-landmark type="hillside">
+      <ns-landmark type="lakeside">
         <h1 slot="heading">
           <span class="h5">Settings.</span>
           <span class="h1 enlighten">Set up your scenario</span>
         </h1>
-        <p slot="paragraph">The options you choose here should reflect in the journey example ahead.</p>
+        <p slot="paragraph">The options you choose here should reflect in the journey example ahead. (Customers will not see this.)</p>
       </ns-landmark>
+
+      <span id="highlighter-container"></span>
 
       <ns-panel>
         <div class="splash">
@@ -98,10 +100,10 @@
         }
       }
 
+      urlParams.delete('hl');
       location.href = "checklist.html" + "?" + urlParams.toString();
     }
   });
-
   // updateHrefs();
   </script>
 
