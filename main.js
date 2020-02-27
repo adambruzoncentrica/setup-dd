@@ -55,7 +55,7 @@ if (hl == "info") {
   highlighter = '<ns-panel><div class="splash"><ns-highlighter type="success"><h3 slot="heading">Refund option updated</h3><p>You have requested a refund by cheque. Your cheque will be processed and sent out within 3-5 working days upon recieving your Direct Debit instruction.</p><p>Please check your updated payment plan below.</p></ns-highlighter></div></ns-panel>';
 }
 
-let pt = (type == "cheque") ? total : total - balance;
+// let pt = (type == "cheque") ? total : total - balance;
 let rd = (type == "cheque") ? 'You have chosen to receive <b>this credit as a cheque</b>.' : 'This credit has been put towards <b>your annual energy usage</b>.';
 let cp = (type == "cheque") ? '<b>£200</b> of your account credit will be sent to you as a cheque in the post.' : '<b>£200</b> of your account credit will be put towards your energy usage.';
 
