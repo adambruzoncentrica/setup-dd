@@ -10,11 +10,13 @@ let type = (urlParams.get('type')) ? urlParams.get('type') : "energy";
 let hl = urlParams.get('hl');
 
 let balance = (urlParams.get('balance')) ? parseInt(urlParams.get('balance')) : 0;
-let total = (urlParams.get('total')) ? parseInt(urlParams.get('total')) : balance + randomIntFromTo(20000, 60000);
+let totalEnergy = (urlParams.get('total')) ? parseInt(urlParams.get('total')) : balance + randomIntFromTo(20000, 60000);
 let term = (urlParams.get('term')) ? parseInt(urlParams.get('term')) : 10;
 
     balance = Math.round(balance);
-let monthly = Math.round((total - balance) / term);
+let monthly = (type === "energy") ? Math.round((total - balance) / term) : Math.round(total / term);
+    monthly = (monthly < 1000) ? 1000 : monthly;
+let totalPayment = monthly * term;
     // total = monthly * term;
 
 urlParams.set('total', total);
