@@ -14,12 +14,12 @@ let totalEnergy = (urlParams.get('total')) ? parseInt(urlParams.get('total')) : 
 let term = (urlParams.get('term')) ? parseInt(urlParams.get('term')) : 10;
 
     balance = Math.round(balance);
-let monthly = (type === "energy") ? Math.round((total - balance) / term) : Math.round(total / term);
+let monthly = (type === "energy") ? Math.round((totalEnergy - balance) / term) : Math.round(totalEnergy / term);
     monthly = (monthly < 1000) ? 1000 : monthly;
 let totalPayment = monthly * term;
     // total = monthly * term;
 
-urlParams.set('total', total);
+urlParams.set('total', totalEnergy);
 
 // Functions
 function randomIntFromTo(from, to) {
