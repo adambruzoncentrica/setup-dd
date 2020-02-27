@@ -35,6 +35,14 @@ function updateHrefs(htmlElement) {
   }
 }
 
+function renderFaqs(faqIndexes) {
+  for (let i = 0; i < faqIndexes.length; i++) {
+    let expander = document.createElement('ns-expander');
+    expander.innerHTML = faqs[faqIndexes[i]].heading + faqs[faqIndexes[i]].content;
+    document.getElementById('faqs').appendChild(expander);
+  }
+}
+
 if (date > moment.utc().date()) { firstDate = moment.utc().date(date).format("Do MMMM YYYY"); }
 else { firstDate = moment.utc().date(date).add(1, "months").format("Do MMMM YYYY"); }
 

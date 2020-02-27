@@ -74,16 +74,11 @@
 
   <script type="text/javascript">
   let pageFAQs = [2,3];
-  for (let i = 0; i < pageFAQs.length; i++) {
-    let expander = document.createElement('ns-expander');
-    expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
-    document.getElementById('faqs').appendChild(expander);
-  }
+  renderFaqs(pageFAQs);
 
   document.getElementById('energy-price').setAttribute('pence', Math.round((total - balance) / term));
   document.getElementById('cheque-price').setAttribute('pence', Math.round(total / term));
 
-  
   updateHrefs();
   </script>
 </body>

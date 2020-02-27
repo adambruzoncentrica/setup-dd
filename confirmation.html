@@ -90,12 +90,7 @@
     pageFAQs.unshift(3);
   }
 
-  for (let i = 0; i < pageFAQs.length; i++) {
-    let expander = document.createElement('ns-expander');
-    expander.innerHTML = faqs[pageFAQs[i]].heading + faqs[pageFAQs[i]].content;
-    document.getElementById('faqs').appendChild(expander);
-  }
-
+  renderFaqs(pageFAQs);
   generatePlan();
 
   urlParams.delete('hl');
