@@ -11,9 +11,9 @@ function generatePlan(actions) {
         h3.innerHTML = planOverviewCards[i].heading;
         card.appendChild(h3);
 
-    for (let n = 0; n < planOverviewCards[i].content.all.length; n++) {
+    for (let n = 0; n < planOverviewCards[i].content.top.length; n++) {
       let p = pParagraph.cloneNode();
-          p.innerHTML = planOverviewCards[i].content.all[n];
+          p.innerHTML = planOverviewCards[i].content.top[n];
           card.appendChild(p);
     }
 
@@ -23,6 +23,12 @@ function generatePlan(actions) {
             p.innerHTML = planOverviewCards[i].content[type][n];
             card.appendChild(p);
       }
+    }
+
+    for (let n = 0; n < planOverviewCards[i].content.bottom.length; n++) {
+      let p = pParagraph.cloneNode();
+          p.innerHTML = planOverviewCards[i].content.bottom[n];
+          card.appendChild(p);
     }
 
     if (actions) {

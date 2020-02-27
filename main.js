@@ -19,6 +19,8 @@ let monthly = (type === "energy") ? Math.round((totalEnergy - balance) / term) :
 let totalPayment = monthly * term;
     // total = monthly * term;
 
+let reviewDate = moment.utc().add(6, 'months').format("Do MMMM YYYY");
+
 urlParams.set('total', totalEnergy);
 
 // Functions
