@@ -29,12 +29,14 @@
           <h2>Your plan overview</h2>
         </div>
 
-        <div id="plan-overview-triple" class="splash triple" role="list">
-          <ns-card type="support">
-            <h3 slot="heading">Plan overview card</h3>
-            <p slot="paragraph">Plan overview information</p>
-          </ns-card>
-        </div>
+        <span id="plan-triple">
+          <div class="splash triple" role="list">
+            <ns-card type="support">
+              <h3 slot="heading">Plan overview card</h3>
+              <p slot="paragraph">Plan overview information</p>
+            </ns-card>
+          </div>
+        </span>
 
       </ns-panel>
 
@@ -58,6 +60,10 @@
         <div class="splash">
           <ns-accordion id="faqs">
             <h3 slot="heading">Frequently asked questions</h3>
+            <ns-expander open="false">
+              <h4 slot="heading">FAQ heading</h4>
+              <p>FAQ content</p>
+            </ns-expander>
           </ns-accordion>
         </div>
       </ns-panel>
@@ -68,24 +74,62 @@
 
   </div>
 
-  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <!-- Moment library -->
   <script src="moment.js" charset="utf-8"></script>
 
+  <!-- Nucleus and supporting DOM library -->
+  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <script src="nucleus-dom.js" charset="utf-8"></script>
+
+  <!-- Main JS for this project -->
   <script src="main.js" charset="utf-8"></script>
-  <script src="faqs.js" charset="utf-8"></script>
-  <script src="plan-overview-cards.js" charset="utf-8"></script>
   <script src="plan.js" charset="utf-8"></script>
 
+  <!-- JSON files with content -->
+  <script src="highlighters.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+  <script src="plan-cards.js" charset="utf-8"></script>
+
   <script type="text/javascript">
-  let pageFAQs = [0,1,2];
-  if (type == "cheque") {
-    pageFAQs.push(3);
+
+  let faqIndexes = [0,1,2];
+  if (refundType == "cheque") {
+    faqIndexes.push(3);
   }
 
-  renderFaqs(pageFAQs);
-  generatePlan(true);
+  let faqExpanders = faqIndexes.map(index => {
+    let p = createP();
+        p.innerHTML = faqContent[index].content;
+    return createNsExpander(faqContent[index].heading, p);
+  });
 
-  urlParams.delete('hl');
+  emptyElementById("faqs");
+  let faqs = generateFaqs(faqExpanders);
+  document.getElementById('faqs').replaceWith(faqs);
+
+  </script>
+
+  <script type="text/javascript">
+  let planContainer = document.getElementById('plan-triple');
+  let planCards = generatePlanCards(planCardsJSON, true);
+  let planTriple = generateTriple(planCards);
+
+  emptyElementById("plan-triple");
+  planContainer.replaceWith(planTriple);
+  </script>
+
+  <!-- JS specific for this page -->
+  <script type="text/javascript">
+
+  if (highlighterIndex) {
+    let hl = highlighters[highlighterIndex];
+    highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+    let panel = generatePanel("splash");
+    panel.firstChild.appendChild(highlighter);
+    renderHighlighter(panel);
+    urlParams.delete('highlighterIndex');
+  }
+
   updateHrefs();
   </script>
 </body>

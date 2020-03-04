@@ -29,7 +29,7 @@
           <h2>Your plan</h2>
         </div>
 
-        <div id="plan-overview-triple" class="splash triple" role="list">
+        <div id="plan-triple" class="splash triple" role="list">
           <ns-card type="support">
             <h3 slot="heading">Plan overview card</h3>
             <p slot="paragraph">Plan overview information</p>
@@ -64,6 +64,10 @@
         <div class="splash">
           <ns-accordion id="faqs">
             <h3 slot="heading">Frequently asked questions</h3>
+            <ns-expander open="false">
+              <h4 slot="heading">FAQ heading</h4>
+              <p>FAQ content</p>
+            </ns-expander>
           </ns-accordion>
         </div>
       </ns-panel>
@@ -74,28 +78,67 @@
 
   </div>
 
-  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <!-- Moment library -->
   <script src="moment.js" charset="utf-8"></script>
 
+  <!-- Nucleus and supporting DOM library -->
+  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <script src="nucleus-dom.js" charset="utf-8"></script>
+
+  <!-- Main JS for this project -->
   <script src="main.js" charset="utf-8"></script>
-  <script src="faqs.js" charset="utf-8"></script>
-  <script src="plan-overview-cards.js" charset="utf-8"></script>
   <script src="plan.js" charset="utf-8"></script>
+
+  <!-- JSON files with content -->
+  <script src="highlighters.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+  <script src="plan-cards.js" charset="utf-8"></script>
 
   <script type="text/javascript">
 
-  let pageFAQs = [4];
-  if (type == "cheque") {
-    pageFAQs.slice();
-    pageFAQs.unshift(3);
+  let faqIndexes = [4];
+  if (refundType == "cheque") {
+    faqIndexes.slice();
+    faqIndexes.unshift(3);
   }
 
-  planOverviewCards[2].content.bottom.push(`Your account will be reviewed on <b>${reviewDate}</b>.`);
+  let faqExpanders = faqIndexes.map(index => {
+    let p = createP();
+        p.innerHTML = faqContent[index].content;
+    return createNsExpander(faqContent[index].heading, p);
+  });
 
-  renderFaqs(pageFAQs);
-  generatePlan();
+  emptyElementById("faqs");
+  let faqs = generateFaqs(faqExpanders);
 
-  urlParams.delete('hl');
+  document.getElementById('faqs').replaceWith(faqs);
+
+  </script>
+
+  <script type="text/javascript">
+  planCardsJSON[2].paragraphs.bottom.push(`Your account will be reviewed on <b>${reviewDate}</b>.`);
+  </script>
+
+  <script type="text/javascript">
+  let planContainer = document.getElementById('plan-triple');
+  let planCards = generatePlanCards(planCardsJSON, false);
+  let planTriple = generateTriple(planCards);
+
+  emptyElementById("plan-triple");
+  planContainer.replaceWith(planTriple);
+  </script>
+
+  <script type="text/javascript">
+
+  if (highlighterIndex) {
+    let hl = highlighters[highlighterIndex];
+    highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+    let panel = generatePanel("splash");
+    panel.firstChild.appendChild(highlighter);
+    renderHighlighter(panel);
+    urlParams.delete('highlighterIndex');
+  }
+
   updateHrefs();
   </script>
 </body>

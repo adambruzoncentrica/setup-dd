@@ -1,23 +1,7 @@
-let nsCard = document.createElement('ns-card');
-    nsCard.setAttribute('role', "listItem");
-    nsCard.setAttribute('type', "support");
-
-let h3Heading = document.createElement('h3');
-    h3Heading.setAttribute('slot', "heading");
-    h3Heading.setAttribute('role', "heading");
-    h3Heading.setAttribute('aria-level', "3");
-
-let pParagraph = document.createElement('p');
-    pParagraph.setAttribute('slot', "paragraph");
-
-let nsCta = document.createElement('ns-cta');
-    nsCta.setAttribute('slot', "cta");
-    nsCta.setAttribute('type', "text");
-
-let planOverviewCards = [
+let planCardsJSON = [
   {
     heading: `Account balance`,
-    content: {
+    paragraphs: {
       top: [
         `Your account balance is <b><ns-price pence="${balance}"></ns-price> in credit</b>.`
       ],
@@ -36,7 +20,7 @@ let planOverviewCards = [
   },
   {
     heading: `Your monthly payments`,
-    content: {
+    paragraphs: {
       top: [
         `Your <b>first payment</b> of <b><ns-price id="first" pence="${monthly}"></ns-price></b> will be taken on <b id="first-date">` + firstDate + `</b>.`,
         `Then, a further <b>9 regular monthly payments</b> of <b><ns-price id="first" pence="${monthly}"></ns-price></b> will be taken on <b><span id="date">` + moment.utc().date(date).format("Do") + `</span> of each month</b> thereafter.`
@@ -52,7 +36,7 @@ let planOverviewCards = [
   },
   {
     heading: `Total projected payment`,
-    content: {
+    paragraphs: {
       top: [
         `By the end of your <b>` + parseInt(term) + `-month plan</b>, we predict your <b>total energy usage</b> will cost <b><ns-price pence="${totalEnergy}"></ns-price></b>.`,
       ],

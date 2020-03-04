@@ -48,6 +48,10 @@
         <div class="splash">
           <ns-accordion id="faqs">
             <h3 slot="heading">Frequently asked questions</h3>
+            <ns-expander open="false">
+              <h4 slot="heading">FAQ heading</h4>
+              <p>FAQ content</p>
+            </ns-expander>
           </ns-accordion>
         </div>
       </ns-panel>
@@ -58,26 +62,59 @@
 
   </div>
 
-  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <!-- Moment library -->
   <script src="moment.js" charset="utf-8"></script>
-  <script src="faqs.js" charset="utf-8"></script>
 
+  <!-- Nucleus and supporting DOM library -->
+  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <script src="nucleus-dom.js" charset="utf-8"></script>
+
+  <!-- Main JS for this project -->
   <script src="main.js" charset="utf-8"></script>
+  <script src="plan.js" charset="utf-8"></script>
+
+  <!-- JSON files with content -->
+  <script src="highlighters.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+  <script src="plan-cards.js" charset="utf-8"></script>
 
   <script type="text/javascript">
   document.querySelector('[name="refund"]').addEventListener('change', function(e) {
-    urlParams.set('type', this.value);
-    urlParams.set('hl', "success");
+    urlParams.set('refundType', this.value);
+    urlParams.set('highlighterIndex', (this.value === "cheque") ? 3 : 2 );
     updateHrefs();
   });
   </script>
 
   <script type="text/javascript">
-  let pageFAQs = [2,3];
-  renderFaqs(pageFAQs);
+  let faqIndexes = [2,3];
 
+  let faqExpanders = faqIndexes.map(index => {
+    let p = createP();
+        p.innerHTML = faqContent[index].content;
+    return createNsExpander(faqContent[index].heading, p);
+  });
+
+  emptyElementById("faqs");
+  let faqs = generateFaqs(faqExpanders);
+  document.getElementById('faqs').replaceWith(faqs);
+  </script>
+
+  <script type="text/javascript">
   document.getElementById('energy-price').setAttribute('pence', totalEnergy);
   document.getElementById('cheque-price').setAttribute('pence', totalPayment);
+  </script>
+
+  <script type="text/javascript">
+
+  if (highlighterIndex) {
+    let hl = highlighters[highlighterIndex];
+    highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+    let panel = generatePanel("splash");
+    panel.firstChild.appendChild(highlighter);
+    renderHighlighter(panel);
+    urlParams.delete('highlighterIndex');
+  }
 
   updateHrefs();
   </script>

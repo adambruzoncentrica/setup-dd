@@ -16,32 +16,17 @@
       <ns-landmark type="lakeside">
         <h1 slot="heading">
           <span class="h5">Set up a fixed Direct Debit.</span>
-          <span class="h1 enlighten"><b>Bank details</b></span>
+          <span class="h1 enlighten">Please provide some <b>Bank details</b></span>
         </h1>
-        <p slot="paragraph">Please provide us with some bank details so you can begin the plan for your gas account.</p>
+        <p slot="paragraph">We need to collect some bank details so you can begin the plan for your gas account.</p>
       </ns-landmark>
-
-      <span id="highlighter-container"></span>
-
-      <ns-panel decoration="invert-bridge-cyan">
-
-        <div class="splash">
-          <h2>Your plan overview</h2>
-        </div>
-
-        <div id="plan-overview-triple" class="splash triple" role="list">
-          <ns-card type="support">
-            <h3 slot="heading">Plan overview card</h3>
-            <p slot="paragraph">Plan overview information</p>
-          </ns-card>
-        </div>
-
-      </ns-panel>
 
       <ns-panel>
         <div class="splash">
           <h2>Bank details</h2>
         </div>
+
+        <span id="highlighter-container"></span>
 
         <div class="splash">
           <ns-form>
@@ -86,6 +71,10 @@
         <div class="splash">
           <ns-accordion id="faqs">
             <h3 slot="heading">Frequently asked questions</h3>
+            <ns-expander open="false">
+              <h4 slot="heading">FAQ heading</h4>
+              <p>FAQ content</p>
+            </ns-expander>
           </ns-accordion>
         </div>
       </ns-panel>
@@ -96,38 +85,77 @@
 
   </div>
 
-  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <!-- Moment library -->
   <script src="moment.js" charset="utf-8"></script>
 
+  <!-- Nucleus and supporting DOM library -->
+  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <script src="nucleus-dom.js" charset="utf-8"></script>
+
+  <!-- Main JS for this project -->
   <script src="main.js" charset="utf-8"></script>
-  <script src="faqs.js" charset="utf-8"></script>
-  <script src="plan-overview-cards.js" charset="utf-8"></script>
   <script src="plan.js" charset="utf-8"></script>
 
+  <!-- JSON files with content -->
+  <script src="highlighters.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+  <script src="plan-cards.js" charset="utf-8"></script>
+
   <script type="text/javascript">
-  let pageFAQs = [0,1,2,3];
-  renderFaqs(pageFAQs);
+
+  let faqIndexes = [0,1,2,3];
+
+  let faqExpanders = faqIndexes.map(index => {
+    let p = createP();
+        p.innerHTML = faqContent[index].content;
+    return createNsExpander(faqContent[index].heading, p);
+  });
+
+  emptyElementById("faqs");
+  let faqs = generateFaqs(faqExpanders);
+  document.getElementById('faqs').replaceWith(faqs);
+
   </script>
 
   <script type="text/javascript">
-  urlParams.delete('hl');
-    document.getElementById('complete').addEventListener('click', () => {
-      const form = document.querySelector('ns-form');
-      const data = form.validate();
-      let zero = data.fields.find((el) => {
-        return el.value == "00000000";
-      });
-      if (zero) {
-        urlParams.set('hl', "error");
-        location.href = "bank-details.html" + "?" + urlParams.toString();
-      } else if (data.isValid) {
-        urlParams.delete('hl');
-        location.href = "confirmation.html" + "?" + urlParams.toString();
-      }
+  urlParams.delete('highlighterIndex');
+  document.getElementById('complete').addEventListener('click', () => {
+    const form = document.querySelector('ns-form');
+    const data = form.validate();
+    let zero = data.fields.find((el) => {
+      return el.value == "00000000";
     });
+    if (zero) {
+      urlParams.set('highlighterIndex', 1);
+      location.href = "bank-details.html" + "?" + urlParams.toString();
+    } else if (data.isValid) {
+      urlParams.delete('highlighterIndex');
+      location.href = "confirmation.html" + "?" + urlParams.toString();
+    }
+  });
 
-    generatePlan(true);
-    updateHrefs();
+  // let planContainer = document.getElementById('plan-triple');
+  // let planCards = generatePlanCards(planCardsJSON, true);
+  // let planTriple = generateTriple(planCards);
+  //
+  // emptyElementById("plan-triple");
+  // planContainer.replaceWith(planTriple);
+
+  </script>
+
+  <script type="text/javascript">
+
+  if (highlighterIndex) {
+    let hl = highlighters[highlighterIndex];
+    highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+    let layout = document.createElement('div');
+    layout.setAttribute('class', "splash");
+    layout.appendChild(highlighter)
+    renderHighlighter(layout);
+    urlParams.delete('highlighterIndex');
+  }
+
+  updateHrefs();
   </script>
 </body>
 </html>

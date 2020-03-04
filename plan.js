@@ -1,47 +1,40 @@
-function generatePlan(actions) {
-  let pot = document.getElementById('plan-overview-triple');
-  while (pot.firstChild) pot.removeChild(pot.firstChild); // Empty the plan overview triple
+function generatePlanCards(cardsJSON, actionsFlag) {
 
-  for (let i = 0; i < planOverviewCards.length; i++) {
+  let cards = [];
+
+  for (let i = 0; i < cardsJSON.length; i++) {
     if (balance == 0 && i === 0) {
       continue;
     }
-    let card = nsCard.cloneNode();
-    let h3 = h3Heading.cloneNode();
-        h3.innerHTML = planOverviewCards[i].heading;
-        card.appendChild(h3);
 
-    for (let n = 0; n < planOverviewCards[i].content.top.length; n++) {
-      let p = pParagraph.cloneNode();
-          p.innerHTML = planOverviewCards[i].content.top[n];
-          card.appendChild(p);
+    let heading = cardsJSON[i].heading;
+    let paragraphs = [];
+    let cta;
+
+    for (let n = 0; n < cardsJSON[i].paragraphs.top.length; n++) {
+      paragraphs.push(cardsJSON[i].paragraphs.top[n]);
     }
 
     if (balance > 0) {
-      for (let n = 0; n < planOverviewCards[i].content[type].length; n++) {
-        let p = pParagraph.cloneNode();
-            p.innerHTML = planOverviewCards[i].content[type][n];
-            card.appendChild(p);
+      for (let n = 0; n < cardsJSON[i].paragraphs[refundType].length; n++) {
+        paragraphs.push(cardsJSON[i].paragraphs[refundType][n]);
       }
     }
 
-    for (let n = 0; n < planOverviewCards[i].content.bottom.length; n++) {
-      let p = pParagraph.cloneNode();
-          p.innerHTML = planOverviewCards[i].content.bottom[n];
-          card.appendChild(p);
+    for (let n = 0; n < cardsJSON[i].paragraphs.bottom.length; n++) {
+      paragraphs.push(cardsJSON[i].paragraphs.bottom[n]);
     }
 
-    if (actions) {
-
-      if (planOverviewCards[i].cta) {
-        let cta = nsCta.cloneNode();
-            cta.innerHTML = planOverviewCards[i].cta.label;
-            cta.href = planOverviewCards[i].cta.link + "?" + urlParams.toString();
-
-        card.appendChild(cta);
-      }
+    if (actionsFlag && cardsJSON[i].cta) {
+      cta = generateCta(cardsJSON[i].cta.link, cardsJSON[i].cta.label);
     }
 
-    pot.appendChild(card);
+    let card = generateCard(heading, paragraphs, cta, "support");
+
+    cards.push(card);
+
   }
+
+  return cards;
+
 }
