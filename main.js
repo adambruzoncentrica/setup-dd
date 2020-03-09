@@ -14,17 +14,19 @@ let highlighterIndex = urlParams.get('highlighterIndex');
 let balance = (urlParams.get('balance')) ? parseInt(urlParams.get('balance')) : 0;
     balance = Math.round(balance);
 
-let totalEnergy = (urlParams.get('totalEnergy')) ? parseInt(urlParams.get('totalEnergy')) : balance + randomIntFromTo(20000, 60000);
+var rand = randomIntFromTo(20000, 60000);
+var totalEnergy = (urlParams.get('totalEnergy')) ? parseInt(urlParams.get('totalEnergy')) : balance + rand;
+    totalEnergy = (urlParams.get('totalEnergy')) ? parseInt(urlParams.get('totalEnergy')) : balance + rand;
+    urlParams.set('totalEnergy', totalEnergy);
+
 let term = (urlParams.get('term')) ? parseInt(urlParams.get('term')) : 10;
 
-let monthly = (refundType === "energy") ? Math.round((totalEnergy - balance) / term) : Math.round(totalEnergy / term);
+var monthly = (refundType === "energy") ? Math.round((totalEnergy - balance) / term) : Math.round(totalEnergy / term);
     monthly = (monthly < 1000) ? 1000 : monthly;
 
 let totalPayment = monthly * term;
 
 let reviewDate = moment.utc().add(6, 'months').format("Do MMMM YYYY");
-
-urlParams.set('totalEnergy', totalEnergy);
 
 // Functions
 function randomIntFromTo(from, to) {
