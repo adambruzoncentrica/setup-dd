@@ -13,14 +13,15 @@
 
       <ns-header></ns-header>
 
+      <ns-landmark type="lakeside">
+        <h1 slot="heading">
+          <span class="h5">Set up a fixed Direct Debit.</span>
+          <span class="h1 enlighten">Change your <b>regular monthly payment date</b></span>
+        </h1>
+        <p slot="paragraph">If you would like to choose the day of the month that your payment will be taken, select from the options below.</p>
+      </ns-landmark>
+
       <ns-panel>
-
-        <div class="splash">
-
-          <h1 class="h5">Set up a fixed Direct Debit.</h1>
-          <h2 class="enlighten">Change your <b>regular monthly payment date</b></h2>
-
-        </div>
 
         <div class="splash">
           <ns-form>
@@ -69,6 +70,11 @@
   <script src="plan-cards.js" charset="utf-8"></script>
 
   <script type="text/javascript">
+
+  document.getElementById('submit-date').addEventListener('click', () => {
+    const form = document.querySelector('ns-form');
+    const data = form.validate();
+  });
 
     document.getElementById('days-of-month').addEventListener('change', function(e) {
       document.getElementById('submit-date').setAttribute('href', "plan.html");

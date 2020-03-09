@@ -5,7 +5,7 @@ let highlighters = [
       `You updated your regular monthly payment date.`,
       `Please check your updated payment plan below.`
     ],
-    type: `success`
+    type: `info`
   },
   {
     heading: `Your bank details seem to be incorrect`,

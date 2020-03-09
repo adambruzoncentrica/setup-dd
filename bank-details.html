@@ -58,6 +58,10 @@
           </ns-form>
         </div>
 
+        <div class="splash">
+          <ns-cta id="back-to-overview" slot="cta" type="text" onclick="javascript:history.back()" icon="arrow-left">Go back to plan overview</ns-cta>
+        </div>
+
       </ns-panel>
 
       <ns-panel>
@@ -103,7 +107,11 @@
 
   <script type="text/javascript">
 
-  let faqIndexes = [0,1,2,3];
+  let faqIndexes = [0,1];
+  if (balance !== 0) {
+    faqIndexes.push(2);
+    faqIndexes.push(3);
+  }
 
   let faqExpanders = faqIndexes.map(index => {
     let p = createP();

@@ -123,7 +123,7 @@ function generateHighlighter(/* heading, paragraph[, paragraph, ...], type */) {
 
   for (let i = 0; i < arguments[1].length; i++) {
     let p = createP();
-    p.innerHTML = arguments[i];
+    p.innerHTML = arguments[1][i];
     highlighter.appendChild(p);
   }
 

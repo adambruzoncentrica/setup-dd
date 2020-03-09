@@ -92,7 +92,10 @@
 
   <script type="text/javascript">
 
-  let faqIndexes = [0,1,2];
+  let faqIndexes = [0,1];
+  if (balance !== 0) {
+    faqIndexes.push(2);
+  }
   if (refundType == "cheque") {
     faqIndexes.push(3);
   }

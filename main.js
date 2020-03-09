@@ -65,3 +65,18 @@ function renderHighlighter(highlighter) {
     container.replaceWith(highlighter);
   }
 }
+
+let hideShowWrapper = document.querySelectorAll('.hide-show-wrapper');
+for (var i = 0; i < hideShowWrapper.length; i++) {
+  let hideShowElements = hideShowWrapper[i].querySelectorAll('.hide-show-me');
+  let hideShowController = hideShowWrapper[i].querySelector('.hide-show-controller');
+  hideShowController.addEventListener('click', function() {
+    for (var i = 0; i < hideShowElements.length; i++) {
+      if (hideShowElements[i].style.display === "none") {
+        hideShowElements[i].style.display = "block";
+      } else {
+        hideShowElements[i].style.display = "none";
+      }
+    }
+  });
+}
