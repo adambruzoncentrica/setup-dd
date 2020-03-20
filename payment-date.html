@@ -21,6 +21,17 @@
         <p slot="paragraph">If you would like to choose the day of the month that your payment will be taken, select from the options below.</p>
       </ns-landmark>
 
+
+      <ns-panel>
+        <div class="splash">
+          <ns-highlighter type="info" role="alert">
+            <h2 slot="heading" role="heading" aria-level="2">Payment date selection</h2>
+            <p>You have selected a date that falls within the next 5 days. This means your first payment will be taken on {{beyondFiveDays}}</p>
+            <p>All future payments will be taken on {{selectedDate}} as per your selection.</p>
+          </ns-highlighter>
+        </div>
+      </ns-panel>
+
       <ns-panel>
 
         <div class="splash">

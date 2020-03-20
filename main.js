@@ -7,7 +7,7 @@ let highlighter = "";
 let urlParams = new URLSearchParams(window.location.search);
 
 // Defaults
-let date = (urlParams.get('date')) ? urlParams.get('date') : 1;
+let paymentDate = (urlParams.get('paymentDate')) ? urlParams.get('paymentDate') : 1;
 let refundType = (urlParams.get('refundType')) ? urlParams.get('refundType') : "energy";
 let highlighterIndex = urlParams.get('highlighterIndex');
 
@@ -16,15 +16,14 @@ let balance = (urlParams.get('balance')) ? parseInt(urlParams.get('balance')) : 
 
 var rand = randomIntFromTo(20000, 60000);
 var totalEnergy = (urlParams.get('totalEnergy')) ? parseInt(urlParams.get('totalEnergy')) : balance + rand;
-    totalEnergy = (urlParams.get('totalEnergy')) ? parseInt(urlParams.get('totalEnergy')) : balance + rand;
     urlParams.set('totalEnergy', totalEnergy);
 
 let term = (urlParams.get('term')) ? parseInt(urlParams.get('term')) : 10;
 
-var monthly = (refundType === "energy") ? Math.round((totalEnergy - balance) / term) : Math.round(totalEnergy / term);
-    monthly = (monthly < 1000) ? 1000 : monthly;
+let totalPayment = (refundType === "energy") ? Math.round(totalEnergy - balance) : totalEnergy;
 
-let totalPayment = monthly * term;
+var monthlyPrice = Math.round(totalPayment / term);
+    monthlyPrice = (monthlyPrice < 1000) ? 1000 : monthlyPrice;
 
 let reviewDate = moment.utc().add(6, 'months').format("Do MMMM YYYY");
 
@@ -50,12 +49,12 @@ function updateHrefs(htmlElement) {
   }
 }
 
-if (date > moment.utc().date()) { firstDate = moment.utc().date(date).format("Do MMMM YYYY"); }
-else { firstDate = moment.utc().date(date).add(1, "months").format("Do MMMM YYYY"); }
+if (paymentDate > moment.utc().date()) { firstDate = moment.utc().date(paymentDate).format("Do MMMM YYYY"); }
+else { firstDate = moment.utc().date(paymentDate).add(1, "months").format("Do MMMM YYYY"); }
 
 for (let i = 0; i < 5; i++) {
-  if (moment.utc().add(i, 'days').date() == date) {
-    firstDate = moment.utc().date(date).add(6, "days").format("Do MMMM YYYY");
+  if (moment.utc().add(i, 'days').date() == paymentDate) {
+    firstDate = moment.utc().date(paymentDate).add(6, "days").format("Do MMMM YYYY");
     break;
   }
 }

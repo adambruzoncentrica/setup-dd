@@ -24,6 +24,7 @@
 
         <div class="splash">
           <ns-form id="refund-form">
+
             <ns-inputter validation='["isRequired"]' heading="Tell us how you would like to claim your account credit" name="refund" helper="Your account is in credit.">
               <p slot="tip-details">You can choose to split your account credit over the course of your plan or claim the balance as a cheque.</p>
 
@@ -101,8 +102,8 @@
   </script>
 
   <script type="text/javascript">
-  document.getElementById('energy-price').setAttribute('pence', totalEnergy);
-  document.getElementById('cheque-price').setAttribute('pence', totalPayment);
+  document.getElementById('energy-price').setAttribute('pence', totalEnergy - balance);
+  document.getElementById('cheque-price').setAttribute('pence', totalEnergy);
   </script>
 
   <script type="text/javascript">

@@ -6,7 +6,7 @@ let planCardsJSON = [
         `Your account balance is <b><ns-price pence="${balance}"></ns-price> in credit</b>.`
       ],
       energy: [
-        `This credit has been put towards <b>your annual energy usage</b>.`
+        `This credit has been put towards <b>your annual energy usage during the plan duration</b>.`
       ],
       cheque: [
         `You have chosen to <b>take this credit as a cheque</b>.`
@@ -22,8 +22,8 @@ let planCardsJSON = [
     heading: `Your monthly payments`,
     paragraphs: {
       top: [
-        `Your <b>first payment</b> of <b><ns-price id="first" pence="${monthly}"></ns-price></b> will be taken on <b id="first-date">` + firstDate + `</b>.`,
-        `Then, a further <b>9 regular monthly payments</b> of <b><ns-price id="first" pence="${monthly}"></ns-price></b> will be taken on <b><span id="date">` + moment.utc().date(date).format("Do") + `</span> of each month</b> thereafter.`
+        `Your <b>first payment</b> of <b><ns-price pence="${monthlyPrice}"></ns-price></b> will be taken on <b id="first-date">` + firstDate + `</b>.`,
+        `Then, a further <b>9 regular monthly payments</b> of <b><ns-price pence="${monthlyPrice}"></ns-price></b> will be taken on <b><span id="date">` + moment.utc().date(paymentDate).format("Do") + `</span> of each month</b> thereafter.`
       ],
       energy: [],
       cheque: [],
