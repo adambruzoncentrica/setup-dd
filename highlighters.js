@@ -26,7 +26,7 @@ let highlighters = [
   {
     heading: `Refund option updated`,
     content: [
-      `You have requested a refund by cheque. Your cheque will be processed and sent out within 3-5 working days upon recieving your Direct Debit instruction.`,
+      `You have requested a refund by cheque. Your cheque will be processed and sent out within 3-5 working days upon receiving your Direct Debit instruction.`,
       `Please check your updated payment plan below.`
     ],
     type: `success`

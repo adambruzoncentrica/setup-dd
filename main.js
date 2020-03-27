@@ -25,6 +25,8 @@ let totalPayment = (refundType === "energy") ? Math.round(totalEnergy - balance)
 var monthlyPrice = Math.round(totalPayment / term);
     monthlyPrice = (monthlyPrice < 1000) ? 1000 : monthlyPrice;
 
+    totalPayment = monthlyPrice * term;
+
 let reviewDate = moment.utc().add(6, 'months').format("Do MMMM YYYY");
 
 // Functions
