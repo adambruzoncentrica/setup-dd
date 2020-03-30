@@ -69,8 +69,6 @@ function renderHighlighter(highlighter) {
 
   highlighter.setAttribute('id', "highlighter-container");
 
-  console.log(highlighter);
-
   let container = document.getElementById('highlighter-container');
   if (container) {
     container.replaceWith(highlighter);
