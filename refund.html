@@ -102,7 +102,7 @@
   </script>
 
   <script type="text/javascript">
-  document.getElementById('energy-price').setAttribute('pence', ((totalEnergy - balance) < 1000) ? 1000 : totalEnergy - balance);
+  document.getElementById('energy-price').setAttribute('pence', (Math.round((totalEnergy - balance) / term) < 1000) ? 1000 : Math.round((totalEnergy - balance) / term));
   document.getElementById('cheque-price').setAttribute('pence', Math.round(totalEnergy / term));
   </script>
 

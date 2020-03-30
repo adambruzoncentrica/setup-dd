@@ -30,5 +30,13 @@ let highlighters = [
       `Please check your updated payment plan below.`
     ],
     type: `success`
+  },
+  {
+    heading: `Payment date selection`,
+    content: [
+      `You have selected a date that falls within the next 5 days. This means your first payment will be taken on ${moment().utc().add(6, "days").format("Do MMMM YYYY")}.`,
+      `All future payments will be taken on <span id="selected-date"></span> of each month thereafter, as per your selection.`
+    ],
+    type: `info`
   }
 ];

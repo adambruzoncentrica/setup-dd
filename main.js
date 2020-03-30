@@ -3,6 +3,10 @@
 // Variables
 let firstDate, option;
 let highlighter = "";
+let highlighterPlaceholder = document.getElementById('highlighter-container');
+if (highlighterPlaceholder) {
+  highlighterPlaceholder = highlighterPlaceholder.cloneNode();
+}
 
 let urlParams = new URLSearchParams(window.location.search);
 
@@ -63,10 +67,15 @@ for (let i = 0; i < 5; i++) {
 
 function renderHighlighter(highlighter) {
 
+  highlighter.setAttribute('id', "highlighter-container");
+
+  console.log(highlighter);
+
   let container = document.getElementById('highlighter-container');
   if (container) {
     container.replaceWith(highlighter);
   }
+
 }
 
 let hideShowWrapper = document.querySelectorAll('.hide-show-wrapper');

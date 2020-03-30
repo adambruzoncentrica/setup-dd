@@ -21,16 +21,7 @@
         <p slot="paragraph">If you would like to choose the day of the month that your payment will be taken, select from the options below.</p>
       </ns-landmark>
 
-
-      <ns-panel>
-        <div class="splash">
-          <ns-highlighter type="info" role="alert">
-            <h2 slot="heading" role="heading" aria-level="2">Payment date selection</h2>
-            <p>You have selected a date that falls within the next 5 days. This means your first payment will be taken on {{beyondFiveDays}}</p>
-            <p>All future payments will be taken on {{selectedDate}} as per your selection.</p>
-          </ns-highlighter>
-        </div>
-      </ns-panel>
+      <span id="highlighter-container"></span>
 
       <ns-panel>
 
@@ -47,7 +38,7 @@
         </div>
 
         <div class="splash">
-          <ns-cta id="keep-date" slot="cta" type="text" onclick="javascript:history.back()" icon="arrow-left">Keep the <span id="date">1st</span> of each month</ns-cta>
+          <ns-cta id="keep-date" slot="cta" type="text" onclick="javascript:history.back()" icon="arrow-left">Keep the <span id="payment-date">1st</span> of each month</ns-cta>
         </div>
 
       </ns-panel>
@@ -89,8 +80,33 @@
 
     document.getElementById('days-of-month').addEventListener('change', function(e) {
       document.getElementById('submit-date').setAttribute('href', "plan.html");
-      urlParams.set('date', this.value);
+      urlParams.set('paymentDate', this.value);
       urlParams.set('highlighterIndex', 0);
+
+      let value = parseInt(this.value);
+
+      let nowMoment = moment().utc();
+      let date = nowMoment;
+
+      if (value < parseInt(date.format("D"))) {
+        date = nowMoment.add(1, 'M');
+      }
+
+      let year = date.year();
+      let month = date.month();
+      let day = date.date(value);
+
+      if (date.isBefore(moment().add(5, "days"))) {
+        let hl = highlighters[4];
+        highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+        let panel = generatePanel("splash");
+        panel.firstChild.appendChild(highlighter);
+        renderHighlighter(panel);
+        document.getElementById('selected-date').textContent = date.format("Do");
+      } else {
+        document.getElementById('highlighter-container').replaceWith(highlighterPlaceholder);
+      }
+
       updateHrefs();
     });
 
@@ -101,7 +117,7 @@
       if (document.getElementById('days-of-month')) { document.getElementById('days-of-month').appendChild(option); }
     }
 
-    document.getElementById('date').innerHTML = moment.utc().date(date).format("Do");
+    document.getElementById('payment-date').innerHTML = moment.utc().date(paymentDate).format("Do");
 
     if (highlighterIndex) {
       let hl = highlighters[highlighterIndex];
