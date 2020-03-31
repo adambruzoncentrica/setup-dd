@@ -99,6 +99,9 @@
   if (refundType == "cheque") {
     faqIndexes.push(3);
   }
+  if (monthlyPrice <= 1000) {
+    faqIndexes.push(5);
+  }
 
   let faqExpanders = faqIndexes.map(index => {
     let p = createP();

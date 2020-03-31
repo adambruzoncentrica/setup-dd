@@ -18,6 +18,10 @@ let faqContent = [
   {
     heading: `Why are accounts reviewed?`,
     content: `All plans are reviewed on a periodic basis to ensure that you are paying the right amount based on your energy consumption.`
+  },
+  {
+    heading: `Can paying £10 a month still lead to a credit balance at the end of my plan?`,
+    content: `As your account balance is in credit, we would setup your direct debit at a nominal regular payment of £10 a month. Your existing balance will be adjusted in your payment plan and any unused credit will be refunded to you at the end of your plan, or carried forward into your future plan.`
   }
 ];
 
