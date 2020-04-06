@@ -2,20 +2,27 @@ let planCardsJSON = [
   {
     heading: `Account balance`,
     paragraphs: {
-      top: [
-        `Your account balance is <b><ns-price pence="${balance}"></ns-price> in credit</b>.`
-      ],
-      energy: [
-        `This credit has been put towards <b>your annual energy usage during the plan duration</b>.`
-      ],
-      cheque: [
-        `You have chosen to <b>take this credit as a cheque</b>.`
-      ],
-      bottom: []
+      top: {
+        credit: [`Your account balance is <b><ns-price pence="${Math.abs(balance)}"></ns-price> in credit</b>.`],
+        debit: [`Your account balance is <b><ns-price pence="${Math.abs(balance)}"></ns-price> in debt</b>.`]
+      },
+      energy: [`This credit has been put towards <b>your annual energy usage during the plan duration</b>.`],
+      cheque: [`You have chosen to <b>take this credit as a cheque</b>.`],
+      debit: [`This debit has been <b>spread across your plan</b> so you don't have to pay it all in one go.`],
+      bottom: {
+        credit: [],
+        debit: []
+      }
     },
     cta: {
-      label: `Refund options`,
-      link: `refund.html`
+      credit: {
+        label: `Refund options`,
+        link: `refund.html`
+      },
+      debit: {
+        label: `Make a payment`,
+        link: `#`
+      }
     }
   },
   {
@@ -27,6 +34,7 @@ let planCardsJSON = [
       ],
       energy: [],
       cheque: [],
+      debit: [],
       bottom: []
     },
     cta: {
@@ -37,15 +45,10 @@ let planCardsJSON = [
   {
     heading: `Total projected payment`,
     paragraphs: {
-      top: [
-        `By the end of your <b>` + parseInt(term) + `-month plan</b>, we predict your <b>total energy usage</b> will cost <b><ns-price pence="${totalEnergy}"></ns-price></b>.`,
-      ],
-      energy: [
-        `You have chosen to <b>use your credit</b> to pay for your <b>energy usage</b>, therefore you will have paid <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`
-      ],
-      cheque: [
-        `You have chosen to <b>take your credit as a cheque</b>, therefore you will have paid <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`
-      ],
+      top: [`By the end of your <b>` + parseInt(term) + `-month plan</b>, we predict your <b>total energy usage</b> will cost <b><ns-price pence="${totalEnergy}"></ns-price></b>.`,],
+      energy: [`You have chosen to <b>use your credit</b> to pay for your <b>energy usage</b>, therefore you will have paid <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`],
+      cheque: [`You have chosen to <b>take your credit as a cheque</b>, therefore you will have paid <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`],
+      debit: [`With the <b>account debt added</b> to the predicted energy usage, your total payments will come to <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`],
       bottom: []
     }
   }

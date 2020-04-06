@@ -11,22 +11,29 @@ function generatePlanCards(cardsJSON, actionsFlag) {
     let paragraphs = [];
     let cta;
 
-    for (let n = 0; n < cardsJSON[i].paragraphs.top.length; n++) {
-      paragraphs.push(cardsJSON[i].paragraphs.top[n]);
+    let pTop = (cardsJSON[i].paragraphs.top[accountStatus]) ? cardsJSON[i].paragraphs.top[accountStatus] : cardsJSON[i].paragraphs.top ;
+    let pType = (cardsJSON[i].paragraphs[refundType]) ? cardsJSON[i].paragraphs[refundType] : cardsJSON[i].paragraphs[accountStatus] ;
+    let pBottom = (cardsJSON[i].paragraphs.bottom[accountStatus]) ? cardsJSON[i].paragraphs.bottom[accountStatus] : cardsJSON[i].paragraphs.bottom ;
+
+    let action;
+    if (cardsJSON[i].cta) {
+      action = (cardsJSON[i].cta[accountStatus]) ? cardsJSON[i].cta[accountStatus] : cardsJSON[i].cta ;
     }
 
-    if (balance > 0) {
-      for (let n = 0; n < cardsJSON[i].paragraphs[refundType].length; n++) {
-        paragraphs.push(cardsJSON[i].paragraphs[refundType][n]);
-      }
+    for (let n = 0; n < pTop.length; n++) {
+      paragraphs.push(pTop[n]);
     }
 
-    for (let n = 0; n < cardsJSON[i].paragraphs.bottom.length; n++) {
-      paragraphs.push(cardsJSON[i].paragraphs.bottom[n]);
+    for (let n = 0; n < pType.length; n++) {
+      paragraphs.push(pType[n]);
     }
 
-    if (actionsFlag && cardsJSON[i].cta) {
-      cta = generateCta(cardsJSON[i].cta.link, cardsJSON[i].cta.label);
+    for (let n = 0; n < pBottom.length; n++) {
+      paragraphs.push(pBottom[n]);
+    }
+
+    if (actionsFlag && action) {
+      cta = generateCta(action.link, action.label);
     }
 
     let card = generateCard(heading, paragraphs, cta, "support");

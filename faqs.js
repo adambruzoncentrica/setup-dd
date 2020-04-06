@@ -22,6 +22,10 @@ let faqContent = [
   {
     heading: `Can paying £10 a month still lead to a credit balance at the end of my plan?`,
     content: `As your account balance is in credit, we would setup your direct debit at a nominal regular payment of £10 a month. Your existing balance will be adjusted in your payment plan and any unused credit will be refunded to you at the end of your plan, or carried forward into your future plan.`
+  },
+  {
+    heading: `Will making a one-off payment reduce my monthly payment amount?`,
+    content: `Yes. When you make a one off payment into your account, your account balance will be updated and the monthly payments will be reduced. Any credit left at the the end of the plan period will be either refunded back to you, or used to reduce your monthly payments in your future plan.`
   }
 ];
 

@@ -93,7 +93,10 @@
   <script type="text/javascript">
 
   let faqIndexes = [0,1];
-  if (balance !== 0) {
+  if (paymentAmount > 0 && balance > 0) {
+    planCardsJSON[0].cta = false;
+  }
+  if (!(paymentAmount > 0) && balance > 0) {
     faqIndexes.push(2);
   }
   if (refundType == "cheque") {
@@ -101,6 +104,9 @@
   }
   if (monthlyPrice <= 1000) {
     faqIndexes.push(5);
+  }
+  if (balance < 0) {
+    faqIndexes.push(6);
   }
 
   let faqExpanders = faqIndexes.map(index => {

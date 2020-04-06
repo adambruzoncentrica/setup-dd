@@ -34,9 +34,17 @@ let highlighters = [
   {
     heading: `Payment date selection`,
     content: [
-      `You have a date that falls within the next 5 days. This means your first payment will be taken on ${moment().utc().add(6, "days").format("Do MMMM YYYY")}.`,
-      `All future payments will be taken on <span id="selected-date"></span> of each month thereafter, as per your selection.`
+      `We need 5 days to set up this payment with your bank. This means your <b>first payment</b> will be taken on <b>${moment().utc().add(6, "days").format("Do MMMM YYYY")}</b>.`,
+      `All future payments will be taken on <b><span id="selected-date"></span></b> of <b>each month</b> thereafter.`
     ],
     type: `info`
+  },
+  {
+    heading: `Payment successful`,
+    content: [
+      `Your payment of <b><ns-price pence="${paymentAmount}"></ns-price></b> has been received.`,
+      `Your account balance and plan have been adjusted below.`
+    ],
+    type: `success`
   }
 ];
