@@ -8,7 +8,7 @@ let planCardsJSON = [
       },
       energy: [`This credit has been put towards <b>your annual energy usage during the plan duration</b>.`],
       cheque: [`You have chosen to <b>take this credit as a cheque</b>.`],
-      debit: [`This debit has been <b>spread across your plan</b> so you don't have to pay it all in one go.`],
+      debit: [`This amount has been <b>spread across your plan</b> so you don't have to pay it all in one go.`],
       bottom: {
         credit: [],
         debit: []
