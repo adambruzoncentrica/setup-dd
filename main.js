@@ -10,8 +10,6 @@ if (highlighterPlaceholder) {
 
 let urlParams = new URLSearchParams(window.location.search);
 
-console.log(urlParams.toString());
-
 // Defaults
 let paymentDate = (urlParams.get('paymentDate')) ? urlParams.get('paymentDate') : 1;
 let refundType = (urlParams.get('refundType')) ? urlParams.get('refundType') : "energy";
@@ -20,7 +18,7 @@ let highlighterIndex = urlParams.get('highlighterIndex');
 let balance = (urlParams.get('balance')) ? parseInt(urlParams.get('balance')) : 0;
     balance = Math.round(balance);
 
-if (balance < 0) { refundType = false; }
+if (balance < 1) { refundType = false; }
 
 var rand = randomIntFromTo(20000, 60000);
 var totalEnergy = (urlParams.get('totalEnergy')) ? parseInt(urlParams.get('totalEnergy')) : balance + rand;
@@ -38,7 +36,8 @@ var monthlyPrice = Math.round(totalPayment / term);
 let reviewDate = moment.utc().add(6, 'months').format("Do MMMM YYYY");
 
 let accountStatus = "zero";
-    accountStatus = (balance > 0) ? "credit" : "debit" ;
+if (balance > 0) { accountStatus = "credit" }
+if (balance < 0) { accountStatus = "debit" }
 
 let paymentAmount = (urlParams.get('paymentAmount')) ? urlParams.get('paymentAmount') : 0;
 

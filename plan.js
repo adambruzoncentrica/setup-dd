@@ -24,8 +24,10 @@ function generatePlanCards(cardsJSON, actionsFlag) {
       paragraphs.push(pTop[n]);
     }
 
-    for (let n = 0; n < pType.length; n++) {
-      paragraphs.push(pType[n]);
+    if (pType) {
+      for (let n = 0; n < pType.length; n++) {
+        paragraphs.push(pType[n]);
+      }
     }
 
     for (let n = 0; n < pBottom.length; n++) {

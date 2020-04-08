@@ -130,6 +130,17 @@
   document.getElementById('complete').addEventListener('click', () => {
     const form = document.querySelector('ns-form');
     const data = form.validate();
+
+    let name = data.fields.find((el) => {
+      return el.name == "account-holder-name";
+    });
+    name = name.value;
+
+    let email = name.replace(/\s+/g, '.').toLowerCase() + "@gmail.com";
+
+    urlParams.set("name", name);
+    urlParams.set("email", email);
+
     let zero = data.fields.find((el) => {
       return el.value == "00000000";
     });
