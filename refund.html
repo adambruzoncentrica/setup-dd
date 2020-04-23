@@ -82,7 +82,7 @@
   <script type="text/javascript">
   document.querySelector('[name="refund"]').addEventListener('change', function(e) {
     urlParams.set('refundType', this.value);
-    urlParams.set('highlighterIndex', (this.value === "cheque") ? 3 : 2 );
+    urlParams.set('highlighterIndex', (this.value === "cheque") ? 4 : 3 );
     updateHrefs();
   });
   </script>
@@ -107,7 +107,7 @@
   </script>
 
   <script type="text/javascript">
-
+  // Render Highlighter script
   if (highlighterIndex) {
     let hl = highlighters[highlighterIndex];
     highlighter = generateHighlighter(hl.heading, hl.content, hl.type);

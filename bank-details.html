@@ -145,7 +145,7 @@
       return el.value == "00000000";
     });
     if (zero) {
-      urlParams.set('highlighterIndex', 1);
+      urlParams.set('highlighterIndex', 2);
       location.href = "bank-details.html" + "?" + urlParams.toString();
     } else if (data.isValid) {
       urlParams.delete('highlighterIndex');

@@ -32,12 +32,12 @@
           <ns-form>
             <ns-inputter mask="" separator="" validation="" value="" helper="Default: 0 [in pence] (Use a minus number for debit balance)" name="balance">
               <label slot="label">Account balance</label>
-              <input type="text">
+              <input type="number">
             </ns-inputter>
 
             <ns-inputter mask="" separator="" validation="" value="" helper="Default: Random from 20000 to 60000 [in pence]" name="totalEnergy">
               <label slot="label">Plan total</label>
-              <input type="text">
+              <input type="number">
             </ns-inputter>
 
             <ns-inputter validation="" heading="Plan length" helper="Default: 10 months" name="term" value="">
@@ -72,7 +72,7 @@
 
             <ns-inputter mask="" separator="" validation="" value="" helper="" name="paymentAmount">
               <label slot="label">Amount paid through 'Make a payment' journey</label>
-              <input type="text">
+              <input type="number">
             </ns-inputter>
 
             <ns-cta id="begin" type="direct" icon="arrow-right" onclick="">Let's get into it!</ns-cta>

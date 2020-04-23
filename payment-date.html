@@ -111,14 +111,15 @@
       let day = date.date(value);
 
       if (date.isBefore(moment().utc().add(6, "days"))) {
-        let hl = highlighters[4];
-        highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
-        let panel = generatePanel("splash");
-        panel.firstChild.appendChild(highlighter);
-        renderHighlighter(panel);
-        document.getElementById('selected-date').textContent = date.format("Do");
+        urlParams.set('highlighterIndex', 1);
+        // let hl = highlighters[4];
+        // highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+        // let panel = generatePanel("splash");
+        // panel.firstChild.appendChild(highlighter);
+        // renderHighlighter(panel);
+        // document.getElementById('selected-date').textContent = date.format("Do");
       } else {
-        document.getElementById('highlighter-container').replaceWith(highlighterPlaceholder);
+        // document.getElementById('highlighter-container').replaceWith(highlighterPlaceholder);
       }
 
       updateHrefs();

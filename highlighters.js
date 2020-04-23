@@ -8,6 +8,16 @@ let highlighters = [
     type: `info`
   },
   {
+    heading: `Payment date updated`,
+    content: [
+      `You updated your regular monthly payment date.`,
+      `<b>Please note: </b> We need 5 days to set up this payment with your bank. This means your <b>first payment</b> will be taken on <b>${moment().utc().add(6, "days").format("Do MMMM YYYY")}</b>.`,
+      `All future payments will be taken on <b><span id="selected-date">${moment().utc().date(paymentDate).format("Do")}</span></b> of <b>each month</b> thereafter.`,
+      `Please check your updated payment plan below.`
+    ],
+    type: `info`
+  },
+  {
     heading: `Your bank details seem to be incorrect`,
     content: [
       `We have checked the bank details you provided and they appear to be incorrect.`,
@@ -30,14 +40,6 @@ let highlighters = [
       `Please check your updated payment plan below.`
     ],
     type: `success`
-  },
-  {
-    heading: `Payment date selection`,
-    content: [
-      `We need 5 days to set up this payment with your bank. This means your <b>first payment</b> will be taken on <b>${moment().utc().add(6, "days").format("Do MMMM YYYY")}</b>.`,
-      `All future payments will be taken on <b><span id="selected-date"></span></b> of <b>each month</b> thereafter.`
-    ],
-    type: `info`
   },
   {
     heading: `Payment successful`,
