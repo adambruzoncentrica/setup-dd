@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>British Gas | Set up Direct Debit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+  <div class="ndsn">
+
+    <main>
+
+      <ns-header></ns-header>
+
+      <ns-landmark type="lakeside">
+        <h1 slot="heading">
+          <span class="h5">Set up a Direct Debit.</span>
+          <span id="landmark-heading" class="h1">Select an account</span>
+        </h1>
+        <p>Choose an account you wish to set up the Direct Debit on.</p>
+      </ns-landmark>
+
+      <ns-panel>
+
+        <div class="splash">
+          <ns-form id="account-form">
+
+            <ns-inputter class="triple" aria-labelledby="landmark-heading" validation="['isRequired']" name="account">
+
+              <ns-selector decoration="gas">
+                <input id="gas-option" type="radio" aria-describedby="gas" name="account-option" value="gas">
+                <label for="gas-option">Gas</label>
+                <div slot="description" id="gas-option-description">
+                  <dl class="dl-stack">
+                    <div>
+                      <dt>Account number</dt>
+                      <dd>000012033844</dd>
+                    </div>
+                  </dl>
+                </div>
+              </ns-selector>
+
+            </ns-inputter>
+
+            <ns-cta id="submit-button" type="direct" href="plan.html">Continue to set up a Direct Debit</ns-cta>
+          </ns-form>
+        </div>
+
+      </ns-panel>
+
+      <ns-panel decoration="invert-bridge-grey-light">
+
+        <div class="splash triple">
+          <ns-card role="listitem" type="support">
+            <h3 slot="heading" role="heading" aria-level="3">Electricity</h3>
+            <p class="p-normal" slot="paragraph">Looking to set-up a Direct Debit for your Electricity account. Please give us a call on <b>0203 000 0000</b> to find out how.</p>
+          </ns-card>
+        </div>
+
+      </ns-panel>
+
+      <ns-footer></ns-footer>
+
+    </main>
+
+  </div>
+
+  <!-- Moment library -->
+  <script src="moment.js" charset="utf-8"></script>
+
+  <!-- Nucleus and supporting DOM library -->
+  <script type="text/javascript" src="https://www.britishgas.co.uk/nucleus/nucleus.min.js"></script>
+  <script src="nucleus-dom.js" charset="utf-8"></script>
+
+  <!-- Main JS for this project -->
+  <script src="main.js" charset="utf-8"></script>
+  <script src="plan.js" charset="utf-8"></script>
+
+  <!-- JSON files with content -->
+  <script src="highlighters.js" charset="utf-8"></script>
+  <script src="faqs.js" charset="utf-8"></script>
+  <script src="plan-cards.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+  // Render Highlighter script
+  if (highlighterIndex) {
+    let hl = highlighters[highlighterIndex];
+    highlighter = generateHighlighter(hl.heading, hl.content, hl.type);
+    let panel = generatePanel("splash");
+    panel.firstChild.appendChild(highlighter);
+    renderHighlighter(panel);
+    urlParams.delete('highlighterIndex');
+  }
+
+  updateHrefs();
+  </script>
+</body>
+</html>
