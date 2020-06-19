@@ -30,7 +30,7 @@ let planCardsJSON = [
     paragraphs: {
       top: [
         `Your <b>first payment</b> of <b><ns-price pence="${monthlyPrice}"></ns-price></b> will be taken on <b id="first-date">` + firstDate + `</b>.`,
-        `Then, a further <b>9 regular monthly payments</b> of <b><ns-price pence="${monthlyPrice}"></ns-price></b> will be taken on <b><span id="date">` + moment.utc().date(paymentDate).format("Do") + `</span> of each month</b> thereafter.`
+        `Thereafter, <b>regular monthly payments</b> of <b><ns-price pence="${monthlyPrice}"></ns-price></b> will be taken on <b><span id="date">` + moment.utc().date(paymentDate).format("Do") + `</span> of each month</b> thereafter.`
       ],
       energy: [],
       cheque: [],
@@ -45,7 +45,7 @@ let planCardsJSON = [
   {
     heading: `Total projected payment`,
     paragraphs: {
-      top: [`By the end of your <b>` + parseInt(term) + `-month plan</b>, we predict your <b>total energy usage</b> will cost <b><ns-price pence="${totalEnergy}"></ns-price></b>.`,],
+      top: [`By the end of your payment plan, we predict your <b>total energy usage</b> will cost <b><ns-price pence="${totalEnergy}"></ns-price></b>.`,],
       energy: [`You have chosen to <b>use your credit</b> to pay for your <b>energy usage</b>, therefore you will have paid <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`],
       cheque: [`You have chosen to <b>take your credit as a cheque</b>, therefore you will have paid <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`],
       debit: [`With the <b>account debt added</b> to the predicted energy usage, your total payments will come to <b><ns-price id="plan-total" pence="${totalPayment}"></ns-price></b>.`],
