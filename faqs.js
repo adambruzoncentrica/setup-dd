@@ -26,6 +26,10 @@ let faqContent = [
   {
     heading: `Will making a one-off payment reduce my monthly payment amount?`,
     content: `Yes. When you make a one off payment into your account, your account balance will be updated and the monthly payments will be reduced. Any credit left at the the end of the plan period will be either refunded back to you, or used to reduce your monthly payments in your future plan.`
+  },
+  {
+    heading: `When will I receive my statements?`,
+    content: `We'll check your monthly payments every six months to make sure you're not paying too much, or too little. You'll just need to send us an up to date meter reading so that we can keep your bills as accurate as possible. You will receive your statement every six month this will be in line with your periodic account review. If you need a statement before your scheduled date, please contact one of our online agents and they will be happy to help.`
   }
 ];
 
