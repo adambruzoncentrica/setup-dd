@@ -29,7 +29,7 @@ let faqContent = [
   },
   {
     heading: `When will I receive my statements?`,
-    content: `We'll check your monthly payments every six months to make sure you're not paying too much, or too little. You'll just need to send us an up to date meter reading so that we can keep your bills as accurate as possible. You will receive your statement every six month this will be in line with your periodic account review. If you need a statement before your scheduled date, please contact one of our online agents and they will be happy to help.`
+    content: `We’ll send you a statement every six months. And we’ll check your monthly payments at the same time to make sure you’re not paying too much, or too little. You’ll just need to give us up to date meter readings so we can keep your bills as accurate as possible. If you need a statement before then, start a live chat with one of our friendly advisers and they’ll be happy to help.`
   }
 ];
 
